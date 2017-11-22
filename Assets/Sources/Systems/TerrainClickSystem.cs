@@ -5,7 +5,7 @@ using Entitas;
 using System;
 
 public class TerrainClickSystem : IExecuteSystem {
-    GameContext context;
+    private GameContext context;    
 
     public TerrainClickSystem(Contexts context)
     {
@@ -14,9 +14,14 @@ public class TerrainClickSystem : IExecuteSystem {
 
     public void Execute()
     {
-        if (context.input.action != InputState.None)
+        if (context.input.action != InputState.Down)
         {
-            Debug.Log(context.input.action);
+            Ray pointRay = Camera.main.ScreenPointToRay(context.input.pointerPosition);
+            RaycastHit hit;
+            if (Physics.Raycast(pointRay, out hit))
+            {
+                context.CreateEntity().AddTerrainClick(hit.point, hit.normal);                
+            }
         }
     }
 }

@@ -11,13 +11,15 @@ public class InputSystem : IExecuteSystem
     public InputSystem(Contexts context)
     {
         this.context = context.game;
-        this.context.SetInput(InputState.None, InputState.None);
+        this.context.SetInput(InputState.None, InputState.None, Vector3.zero);
     }
 
     public void Execute()
     {
         context.input.selection = DetectMouseButton(0);
         context.input.action = DetectMouseButton(1);
+
+        context.input.pointerPosition = Input.mousePosition;
     }
 
     private InputState DetectMouseButton(int button)

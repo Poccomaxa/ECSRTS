@@ -12,22 +12,22 @@ public partial class GameContext {
     public InputComponent input { get { return inputEntity.input; } }
     public bool hasInput { get { return inputEntity != null; } }
 
-    public GameEntity SetInput(InputState newSelection, InputState newAction) {
+    public GameEntity SetInput(InputState newSelection, InputState newAction, UnityEngine.Vector3 newPointerPosition) {
         if (hasInput) {
             throw new Entitas.EntitasException("Could not set Input!\n" + this + " already has an entity with InputComponent!",
                 "You should check if the context already has a inputEntity before setting it or use context.ReplaceInput().");
         }
         var entity = CreateEntity();
-        entity.AddInput(newSelection, newAction);
+        entity.AddInput(newSelection, newAction, newPointerPosition);
         return entity;
     }
 
-    public void ReplaceInput(InputState newSelection, InputState newAction) {
+    public void ReplaceInput(InputState newSelection, InputState newAction, UnityEngine.Vector3 newPointerPosition) {
         var entity = inputEntity;
         if (entity == null) {
-            entity = SetInput(newSelection, newAction);
+            entity = SetInput(newSelection, newAction, newPointerPosition);
         } else {
-            entity.ReplaceInput(newSelection, newAction);
+            entity.ReplaceInput(newSelection, newAction, newPointerPosition);
         }
     }
 
@@ -49,19 +49,21 @@ public partial class GameEntity {
     public InputComponent input { get { return (InputComponent)GetComponent(GameComponentsLookup.Input); } }
     public bool hasInput { get { return HasComponent(GameComponentsLookup.Input); } }
 
-    public void AddInput(InputState newSelection, InputState newAction) {
+    public void AddInput(InputState newSelection, InputState newAction, UnityEngine.Vector3 newPointerPosition) {
         var index = GameComponentsLookup.Input;
         var component = CreateComponent<InputComponent>(index);
         component.selection = newSelection;
         component.action = newAction;
+        component.pointerPosition = newPointerPosition;
         AddComponent(index, component);
     }
 
-    public void ReplaceInput(InputState newSelection, InputState newAction) {
+    public void ReplaceInput(InputState newSelection, InputState newAction, UnityEngine.Vector3 newPointerPosition) {
         var index = GameComponentsLookup.Input;
         var component = CreateComponent<InputComponent>(index);
         component.selection = newSelection;
         component.action = newAction;
+        component.pointerPosition = newPointerPosition;
         ReplaceComponent(index, component);
     }
 

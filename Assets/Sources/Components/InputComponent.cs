@@ -16,4 +16,5 @@ public enum InputState
 public class InputComponent : IComponent {
     public InputState selection = InputState.None;
     public InputState action = InputState.None;
+    public Vector3 pointerPosition;
 }
