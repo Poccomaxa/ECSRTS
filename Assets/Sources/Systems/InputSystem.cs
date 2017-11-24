@@ -4,41 +4,56 @@ using UnityEngine;
 using Entitas;
 using System;
 
-public class InputSystem : IExecuteSystem
+public class InputSystem : IExecuteSystem, ICleanupSystem
 {
     GameContext context;
 
     public InputSystem(Contexts context)
     {
         this.context = context.game;
-        this.context.SetInput(InputState.None, InputState.None, Vector3.zero);
     }
 
     public void Execute()
     {
-        context.input.selection = DetectMouseButton(0);
-        context.input.action = DetectMouseButton(1);
+        DetectMouseButton(0, InputAction.SELECT);
+        DetectMouseButton(1, InputAction.ACT);
 
-        context.input.pointerPosition = Input.mousePosition;
+        var entity = context.CreateEntity();
+        entity.AddInputPointerPosition(Input.mousePosition);        
     }
-
-    private InputState DetectMouseButton(int button)
+    
+    private void DetectMouseButton(int button, InputAction action)
     {
+        GameEntity entity = context.CreateEntity();
+        entity.AddInputAction(action);
+
         if (Input.GetMouseButtonDown(button))
         {
-            return InputState.Down;
+            entity.isInputActionStarted = true;
         }
 
         if (Input.GetMouseButton(button))
         {
-            return InputState.Pressed;
+            entity.isInputActionActive = true;
         }
 
         if (Input.GetMouseButtonUp(button))
         {
-            return InputState.Up;
+            entity.isInputActionEnded = true;
         }
+    }
 
-        return InputState.None;
+    public void Cleanup()
+    {
+        var inputActions = context.GetGroup(GameMatcher.InputAction).GetEntities();
+        foreach (var entity in inputActions)
+        {
+            entity.Destroy();
+        }
+        var pointerPositions = context.GetGroup(GameMatcher.InputPointerPosition).GetEntities();
+        foreach (var entity in pointerPositions)
+        {
+            entity.Destroy();
+        }
     }
 }

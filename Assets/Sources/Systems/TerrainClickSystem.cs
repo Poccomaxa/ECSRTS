@@ -1,27 +1,38 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using Entitas;
 using System;
 
-public class TerrainClickSystem : IExecuteSystem {
-    private GameContext context;    
-
-    public TerrainClickSystem(Contexts context)
+public class TerrainClickSystem : ReactiveSystem<GameEntity> {
+    private GameContext context;
+    public TerrainClickSystem(Contexts contexts) : base(contexts.game)
     {
-        this.context = context.game;
+        context = contexts.game;
     }
 
-    public void Execute()
+    protected override void Execute(List<GameEntity> entities)
     {
-        if (context.input.action != InputState.Down)
+        GameEntity pointerPosition = context.GetGroup(GameMatcher.InputPointerPosition).Last();
+        foreach (var e in entities)
         {
-            Ray pointRay = Camera.main.ScreenPointToRay(context.input.pointerPosition);
+            Ray pointRay = Camera.main.ScreenPointToRay(pointerPosition.inputPointerPosition.position);
             RaycastHit hit;
             if (Physics.Raycast(pointRay, out hit))
             {
-                context.CreateEntity().AddTerrainClick(hit.point, hit.normal);                
-            }
+                context.CreateEntity().AddTerrainClick(hit.point, hit.normal);
+            }            
         }
+    }
+
+    protected override bool Filter(GameEntity entity)
+    {
+        return entity.hasInputAction && entity.isInputActionStarted && entity.inputAction.action == InputAction.ACT;
+    }
+
+    protected override ICollector<GameEntity> GetTrigger(IContext<GameEntity> context)
+    {
+        return context.CreateCollector(GameMatcher.InputAction.Added());
     }
 }
