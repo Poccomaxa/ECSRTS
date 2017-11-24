@@ -5,34 +5,43 @@ using UnityEngine;
 using Entitas;
 using System;
 
-public class TerrainClickSystem : ReactiveSystem<GameEntity> {
-    private GameContext context;
-    public TerrainClickSystem(Contexts contexts) : base(contexts.game)
+public class TerrainClickSystem : ReactiveSystem<InputEntity>, ICleanupSystem {
+    private InputContext inputContext;
+    public TerrainClickSystem(Contexts contexts) : base(contexts.input)
     {
-        context = contexts.game;
+        inputContext = contexts.input;
     }
 
-    protected override void Execute(List<GameEntity> entities)
+    protected override void Execute(List<InputEntity> entities)
     {
-        GameEntity pointerPosition = context.GetGroup(GameMatcher.InputPointerPosition).Last();
+        InputEntity pointerPosition = inputContext.GetGroup(InputMatcher.InputPointerPosition).Last();
         foreach (var e in entities)
         {
             Ray pointRay = Camera.main.ScreenPointToRay(pointerPosition.inputPointerPosition.position);
             RaycastHit hit;
             if (Physics.Raycast(pointRay, out hit))
             {
-                context.CreateEntity().AddTerrainClick(hit.point, hit.normal);
+                inputContext.CreateEntity().AddTerrainClick(hit.point, hit.normal);
             }            
         }
     }
 
-    protected override bool Filter(GameEntity entity)
+    protected override bool Filter(InputEntity entity)
     {
         return entity.hasInputAction && entity.isInputActionStarted && entity.inputAction.action == InputAction.ACT;
     }
 
-    protected override ICollector<GameEntity> GetTrigger(IContext<GameEntity> context)
+    protected override ICollector<InputEntity> GetTrigger(IContext<InputEntity> context)
     {
-        return context.CreateCollector(GameMatcher.InputAction.Added());
+        return context.CreateCollector(InputMatcher.InputActionStarted.Added());
+    }
+
+    public void Cleanup()
+    {
+        var entities = inputContext.GetGroup(InputMatcher.TerrainClick).GetEntities();
+        foreach (var entity in entities)
+        {
+            entity.Destroy();
+        }
     }
 }

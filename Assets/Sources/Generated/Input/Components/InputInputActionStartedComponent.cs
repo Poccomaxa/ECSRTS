@@ -6,15 +6,15 @@
 //     the code is regenerated.
 // </auto-generated>
 //------------------------------------------------------------------------------
-public partial class GameEntity {
+public partial class InputEntity {
 
     static readonly InputActionStartedComponent inputActionStartedComponent = new InputActionStartedComponent();
 
     public bool isInputActionStarted {
-        get { return HasComponent(GameComponentsLookup.InputActionStarted); }
+        get { return HasComponent(InputComponentsLookup.InputActionStarted); }
         set {
             if (value != isInputActionStarted) {
-                var index = GameComponentsLookup.InputActionStarted;
+                var index = InputComponentsLookup.InputActionStarted;
                 if (value) {
                     var componentPool = GetComponentPool(index);
                     var component = componentPool.Count > 0
@@ -38,15 +38,15 @@ public partial class GameEntity {
 //     the code is regenerated.
 // </auto-generated>
 //------------------------------------------------------------------------------
-public sealed partial class GameMatcher {
+public sealed partial class InputMatcher {
 
-    static Entitas.IMatcher<GameEntity> _matcherInputActionStarted;
+    static Entitas.IMatcher<InputEntity> _matcherInputActionStarted;
 
-    public static Entitas.IMatcher<GameEntity> InputActionStarted {
+    public static Entitas.IMatcher<InputEntity> InputActionStarted {
         get {
             if (_matcherInputActionStarted == null) {
-                var matcher = (Entitas.Matcher<GameEntity>)Entitas.Matcher<GameEntity>.AllOf(GameComponentsLookup.InputActionStarted);
-                matcher.componentNames = GameComponentsLookup.componentNames;
+                var matcher = (Entitas.Matcher<InputEntity>)Entitas.Matcher<InputEntity>.AllOf(InputComponentsLookup.InputActionStarted);
+                matcher.componentNames = InputComponentsLookup.componentNames;
                 _matcherInputActionStarted = matcher;
             }
 

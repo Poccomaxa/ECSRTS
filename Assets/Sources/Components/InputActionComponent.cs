@@ -10,6 +10,7 @@ public enum InputAction
     ACT
 }
 
+[Input]
 public class InputActionComponent : IComponent {
     [EntityIndex]
     public InputAction action;

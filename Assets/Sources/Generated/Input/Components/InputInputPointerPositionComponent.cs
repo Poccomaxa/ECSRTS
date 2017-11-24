@@ -6,27 +6,27 @@
 //     the code is regenerated.
 // </auto-generated>
 //------------------------------------------------------------------------------
-public partial class GameEntity {
+public partial class InputEntity {
 
-    public InputPointerPositionComponent inputPointerPosition { get { return (InputPointerPositionComponent)GetComponent(GameComponentsLookup.InputPointerPosition); } }
-    public bool hasInputPointerPosition { get { return HasComponent(GameComponentsLookup.InputPointerPosition); } }
+    public InputPointerPositionComponent inputPointerPosition { get { return (InputPointerPositionComponent)GetComponent(InputComponentsLookup.InputPointerPosition); } }
+    public bool hasInputPointerPosition { get { return HasComponent(InputComponentsLookup.InputPointerPosition); } }
 
     public void AddInputPointerPosition(UnityEngine.Vector3 newPosition) {
-        var index = GameComponentsLookup.InputPointerPosition;
+        var index = InputComponentsLookup.InputPointerPosition;
         var component = CreateComponent<InputPointerPositionComponent>(index);
         component.position = newPosition;
         AddComponent(index, component);
     }
 
     public void ReplaceInputPointerPosition(UnityEngine.Vector3 newPosition) {
-        var index = GameComponentsLookup.InputPointerPosition;
+        var index = InputComponentsLookup.InputPointerPosition;
         var component = CreateComponent<InputPointerPositionComponent>(index);
         component.position = newPosition;
         ReplaceComponent(index, component);
     }
 
     public void RemoveInputPointerPosition() {
-        RemoveComponent(GameComponentsLookup.InputPointerPosition);
+        RemoveComponent(InputComponentsLookup.InputPointerPosition);
     }
 }
 
@@ -38,15 +38,15 @@ public partial class GameEntity {
 //     the code is regenerated.
 // </auto-generated>
 //------------------------------------------------------------------------------
-public sealed partial class GameMatcher {
+public sealed partial class InputMatcher {
 
-    static Entitas.IMatcher<GameEntity> _matcherInputPointerPosition;
+    static Entitas.IMatcher<InputEntity> _matcherInputPointerPosition;
 
-    public static Entitas.IMatcher<GameEntity> InputPointerPosition {
+    public static Entitas.IMatcher<InputEntity> InputPointerPosition {
         get {
             if (_matcherInputPointerPosition == null) {
-                var matcher = (Entitas.Matcher<GameEntity>)Entitas.Matcher<GameEntity>.AllOf(GameComponentsLookup.InputPointerPosition);
-                matcher.componentNames = GameComponentsLookup.componentNames;
+                var matcher = (Entitas.Matcher<InputEntity>)Entitas.Matcher<InputEntity>.AllOf(InputComponentsLookup.InputPointerPosition);
+                matcher.componentNames = InputComponentsLookup.componentNames;
                 _matcherInputPointerPosition = matcher;
             }
 

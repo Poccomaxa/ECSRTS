@@ -6,13 +6,13 @@
 //     the code is regenerated.
 // </auto-generated>
 //------------------------------------------------------------------------------
-public partial class GameEntity {
+public partial class InputEntity {
 
-    public TerrainClickComponent terrainClick { get { return (TerrainClickComponent)GetComponent(GameComponentsLookup.TerrainClick); } }
-    public bool hasTerrainClick { get { return HasComponent(GameComponentsLookup.TerrainClick); } }
+    public TerrainClickComponent terrainClick { get { return (TerrainClickComponent)GetComponent(InputComponentsLookup.TerrainClick); } }
+    public bool hasTerrainClick { get { return HasComponent(InputComponentsLookup.TerrainClick); } }
 
     public void AddTerrainClick(UnityEngine.Vector3 newPosition, UnityEngine.Vector3 newNormal) {
-        var index = GameComponentsLookup.TerrainClick;
+        var index = InputComponentsLookup.TerrainClick;
         var component = CreateComponent<TerrainClickComponent>(index);
         component.position = newPosition;
         component.normal = newNormal;
@@ -20,7 +20,7 @@ public partial class GameEntity {
     }
 
     public void ReplaceTerrainClick(UnityEngine.Vector3 newPosition, UnityEngine.Vector3 newNormal) {
-        var index = GameComponentsLookup.TerrainClick;
+        var index = InputComponentsLookup.TerrainClick;
         var component = CreateComponent<TerrainClickComponent>(index);
         component.position = newPosition;
         component.normal = newNormal;
@@ -28,7 +28,7 @@ public partial class GameEntity {
     }
 
     public void RemoveTerrainClick() {
-        RemoveComponent(GameComponentsLookup.TerrainClick);
+        RemoveComponent(InputComponentsLookup.TerrainClick);
     }
 }
 
@@ -40,15 +40,15 @@ public partial class GameEntity {
 //     the code is regenerated.
 // </auto-generated>
 //------------------------------------------------------------------------------
-public sealed partial class GameMatcher {
+public sealed partial class InputMatcher {
 
-    static Entitas.IMatcher<GameEntity> _matcherTerrainClick;
+    static Entitas.IMatcher<InputEntity> _matcherTerrainClick;
 
-    public static Entitas.IMatcher<GameEntity> TerrainClick {
+    public static Entitas.IMatcher<InputEntity> TerrainClick {
         get {
             if (_matcherTerrainClick == null) {
-                var matcher = (Entitas.Matcher<GameEntity>)Entitas.Matcher<GameEntity>.AllOf(GameComponentsLookup.TerrainClick);
-                matcher.componentNames = GameComponentsLookup.componentNames;
+                var matcher = (Entitas.Matcher<InputEntity>)Entitas.Matcher<InputEntity>.AllOf(InputComponentsLookup.TerrainClick);
+                matcher.componentNames = InputComponentsLookup.componentNames;
                 _matcherTerrainClick = matcher;
             }
 

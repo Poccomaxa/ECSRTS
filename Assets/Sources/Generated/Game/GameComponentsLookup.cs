@@ -8,39 +8,21 @@
 //------------------------------------------------------------------------------
 public static class GameComponentsLookup {
 
-    public const int InputActionActive = 0;
-    public const int InputAction = 1;
-    public const int InputActionEnded = 2;
-    public const int InputActionStarted = 3;
-    public const int InputPointerPosition = 4;
-    public const int Position = 5;
-    public const int Rotation = 6;
-    public const int TerrainClick = 7;
-    public const int View = 8;
+    public const int Position = 0;
+    public const int Rotation = 1;
+    public const int View = 2;
 
-    public const int TotalComponents = 9;
+    public const int TotalComponents = 3;
 
     public static readonly string[] componentNames = {
-        "InputActionActive",
-        "InputAction",
-        "InputActionEnded",
-        "InputActionStarted",
-        "InputPointerPosition",
         "Position",
         "Rotation",
-        "TerrainClick",
         "View"
     };
 
     public static readonly System.Type[] componentTypes = {
-        typeof(InputActionActiveComponent),
-        typeof(InputActionComponent),
-        typeof(InputActionEndedComponent),
-        typeof(InputActionStartedComponent),
-        typeof(InputPointerPositionComponent),
         typeof(PositionComponent),
         typeof(RotationComponent),
-        typeof(TerrainClickComponent),
         typeof(ViewComponent)
     };
 }

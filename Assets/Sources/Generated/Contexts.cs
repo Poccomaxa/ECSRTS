@@ -62,17 +62,17 @@ public partial class Contexts {
 
     [Entitas.CodeGeneration.Attributes.PostConstructor]
     public void InitializeEntityIndices() {
-        game.AddEntityIndex(new Entitas.EntityIndex<GameEntity, InputAction>(
+        input.AddEntityIndex(new Entitas.EntityIndex<InputEntity, InputAction>(
             InputAction,
-            game.GetGroup(GameMatcher.InputAction),
+            input.GetGroup(InputMatcher.InputAction),
             (e, c) => ((InputActionComponent)c).action));
     }
 }
 
 public static class ContextsExtensions {
 
-    public static System.Collections.Generic.HashSet<GameEntity> GetEntitiesWithInputAction(this GameContext context, InputAction action) {
-        return ((Entitas.EntityIndex<GameEntity, InputAction>)context.GetEntityIndex(Contexts.InputAction)).GetEntities(action);
+    public static System.Collections.Generic.HashSet<InputEntity> GetEntitiesWithInputAction(this InputContext context, InputAction action) {
+        return ((Entitas.EntityIndex<InputEntity, InputAction>)context.GetEntityIndex(Contexts.InputAction)).GetEntities(action);
     }
 }
 //------------------------------------------------------------------------------

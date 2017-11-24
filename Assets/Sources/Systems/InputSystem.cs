@@ -6,11 +6,11 @@ using System;
 
 public class InputSystem : IExecuteSystem, ICleanupSystem
 {
-    GameContext context;
+    InputContext context;
 
     public InputSystem(Contexts context)
     {
-        this.context = context.game;
+        this.context = context.input;
     }
 
     public void Execute()
@@ -24,7 +24,7 @@ public class InputSystem : IExecuteSystem, ICleanupSystem
     
     private void DetectMouseButton(int button, InputAction action)
     {
-        GameEntity entity = context.CreateEntity();
+        InputEntity entity = context.CreateEntity();
         entity.AddInputAction(action);
 
         if (Input.GetMouseButtonDown(button))
@@ -45,12 +45,12 @@ public class InputSystem : IExecuteSystem, ICleanupSystem
 
     public void Cleanup()
     {
-        var inputActions = context.GetGroup(GameMatcher.InputAction).GetEntities();
+        var inputActions = context.GetGroup(InputMatcher.InputAction).GetEntities();
         foreach (var entity in inputActions)
         {
             entity.Destroy();
         }
-        var pointerPositions = context.GetGroup(GameMatcher.InputPointerPosition).GetEntities();
+        var pointerPositions = context.GetGroup(InputMatcher.InputPointerPosition).GetEntities();
         foreach (var entity in pointerPositions)
         {
             entity.Destroy();

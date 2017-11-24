@@ -4,17 +4,17 @@ using UnityEngine;
 using Entitas;
 using System;
 
-public class TerrainClickHighlightSystem : ReactiveSystem<GameEntity>
+public class TerrainClickHighlightSystem : ReactiveSystem<InputEntity>
 {
     private GameObject clickHighlightPrefab;
-    public TerrainClickHighlightSystem(Contexts contexts, GameObject clickHighlightPrefab) : base(contexts.game)
+    public TerrainClickHighlightSystem(Contexts contexts, GameObject clickHighlightPrefab) : base(contexts.input)
     {
         this.clickHighlightPrefab = clickHighlightPrefab;
     }
 
-    protected override void Execute(List<GameEntity> entities)
+    protected override void Execute(List<InputEntity> entities)
     {
-        foreach (GameEntity entity in entities)
+        foreach (InputEntity entity in entities)
         {
             GameObject newPrefab = GameObject.Instantiate(clickHighlightPrefab);
             newPrefab.transform.position = entity.terrainClick.position;
@@ -22,13 +22,13 @@ public class TerrainClickHighlightSystem : ReactiveSystem<GameEntity>
         }
     }
 
-    protected override bool Filter(GameEntity entity)
+    protected override bool Filter(InputEntity entity)
     {
         return entity.hasTerrainClick;
     }
 
-    protected override ICollector<GameEntity> GetTrigger(IContext<GameEntity> context)
+    protected override ICollector<InputEntity> GetTrigger(IContext<InputEntity> context)
     {
-        return context.CreateCollector(GameMatcher.TerrainClick.Added());
+        return context.CreateCollector(InputMatcher.TerrainClick.Added());
     }
 }

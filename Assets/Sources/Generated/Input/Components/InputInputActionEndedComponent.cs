@@ -6,20 +6,20 @@
 //     the code is regenerated.
 // </auto-generated>
 //------------------------------------------------------------------------------
-public partial class GameEntity {
+public partial class InputEntity {
 
-    static readonly InputActionActiveComponent inputActionActiveComponent = new InputActionActiveComponent();
+    static readonly InputActionEndedComponent inputActionEndedComponent = new InputActionEndedComponent();
 
-    public bool isInputActionActive {
-        get { return HasComponent(GameComponentsLookup.InputActionActive); }
+    public bool isInputActionEnded {
+        get { return HasComponent(InputComponentsLookup.InputActionEnded); }
         set {
-            if (value != isInputActionActive) {
-                var index = GameComponentsLookup.InputActionActive;
+            if (value != isInputActionEnded) {
+                var index = InputComponentsLookup.InputActionEnded;
                 if (value) {
                     var componentPool = GetComponentPool(index);
                     var component = componentPool.Count > 0
                             ? componentPool.Pop()
-                            : inputActionActiveComponent;
+                            : inputActionEndedComponent;
 
                     AddComponent(index, component);
                 } else {
@@ -38,19 +38,19 @@ public partial class GameEntity {
 //     the code is regenerated.
 // </auto-generated>
 //------------------------------------------------------------------------------
-public sealed partial class GameMatcher {
+public sealed partial class InputMatcher {
 
-    static Entitas.IMatcher<GameEntity> _matcherInputActionActive;
+    static Entitas.IMatcher<InputEntity> _matcherInputActionEnded;
 
-    public static Entitas.IMatcher<GameEntity> InputActionActive {
+    public static Entitas.IMatcher<InputEntity> InputActionEnded {
         get {
-            if (_matcherInputActionActive == null) {
-                var matcher = (Entitas.Matcher<GameEntity>)Entitas.Matcher<GameEntity>.AllOf(GameComponentsLookup.InputActionActive);
-                matcher.componentNames = GameComponentsLookup.componentNames;
-                _matcherInputActionActive = matcher;
+            if (_matcherInputActionEnded == null) {
+                var matcher = (Entitas.Matcher<InputEntity>)Entitas.Matcher<InputEntity>.AllOf(InputComponentsLookup.InputActionEnded);
+                matcher.componentNames = InputComponentsLookup.componentNames;
+                _matcherInputActionEnded = matcher;
             }
 
-            return _matcherInputActionActive;
+            return _matcherInputActionEnded;
         }
     }
 }

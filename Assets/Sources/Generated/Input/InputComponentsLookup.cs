@@ -8,15 +8,30 @@
 //------------------------------------------------------------------------------
 public static class InputComponentsLookup {
 
+    public const int InputActionActive = 0;
+    public const int InputAction = 1;
+    public const int InputActionEnded = 2;
+    public const int InputActionStarted = 3;
+    public const int InputPointerPosition = 4;
+    public const int TerrainClick = 5;
 
-
-    public const int TotalComponents = 0;
+    public const int TotalComponents = 6;
 
     public static readonly string[] componentNames = {
-
+        "InputActionActive",
+        "InputAction",
+        "InputActionEnded",
+        "InputActionStarted",
+        "InputPointerPosition",
+        "TerrainClick"
     };
 
     public static readonly System.Type[] componentTypes = {
-
+        typeof(InputActionActiveComponent),
+        typeof(InputActionComponent),
+        typeof(InputActionEndedComponent),
+        typeof(InputActionStartedComponent),
+        typeof(InputPointerPositionComponent),
+        typeof(TerrainClickComponent)
     };
 }
