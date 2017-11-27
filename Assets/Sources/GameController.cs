@@ -6,16 +6,19 @@ using UnityEngine;
 public class GameController : MonoBehaviour {
     private Systems systems;
 
-    public GameObject clickHighlightPrefab;
 	void Start () {
         var context = Contexts.sharedInstance;
         systems = new Feature("Systems")
             .Add(new InputSystem(context))
             .Add(new TerrainClickSystem(context))
-            .Add(new TerrainClickHighlightSystem(context, clickHighlightPrefab))
+            .Add(new TerrainClickHighlightSystem(context))
             .Add(new ViewFabricSystem(context))
             .Add(new PositionSystem(context))
-            .Add(new RotationSystem(context));
+            .Add(new RotationSystem(context))
+            .Add(new DestroyCountdownSystem(context))
+            .Add(new ViewCleanupSystem(context))
+            .Add(new DestroyedCleanupSystem(context));
+            
         systems.Initialize();
 	}
 

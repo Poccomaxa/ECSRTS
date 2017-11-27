@@ -9,14 +9,18 @@
 public static class GameComponentsLookup {
 
     public const int Asset = 0;
-    public const int Position = 1;
-    public const int Rotation = 2;
-    public const int View = 3;
+    public const int DestroyCountdown = 1;
+    public const int Destroyed = 2;
+    public const int Position = 3;
+    public const int Rotation = 4;
+    public const int View = 5;
 
-    public const int TotalComponents = 4;
+    public const int TotalComponents = 6;
 
     public static readonly string[] componentNames = {
         "Asset",
+        "DestroyCountdown",
+        "Destroyed",
         "Position",
         "Rotation",
         "View"
@@ -24,6 +28,8 @@ public static class GameComponentsLookup {
 
     public static readonly System.Type[] componentTypes = {
         typeof(AssetComponent),
+        typeof(DestroyCountdownComponent),
+        typeof(DestroyedComponent),
         typeof(PositionComponent),
         typeof(RotationComponent),
         typeof(ViewComponent)
