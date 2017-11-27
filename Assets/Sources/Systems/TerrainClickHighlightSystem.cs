@@ -20,7 +20,7 @@ public class TerrainClickHighlightSystem : ReactiveSystem<InputEntity>
             newEntity.AddAsset("Prefabs/ClickHighlightPrefab");
             newEntity.AddPosition(entity.terrainClick.position);
             newEntity.AddRotation(Quaternion.FromToRotation(Vector3.up, entity.terrainClick.normal));
-            newEntity.AddDestroyCountdown(1);
+            newEntity.AddDestroyCountdown(0.3f);
         }
     }
 

@@ -30,7 +30,7 @@ public class GameController : MonoBehaviour {
         RaycastHit hit;
         if (Physics.Raycast(centerRay, out hit)) {
             entity.AddNavigation(hit.point);
-        }   
+        }
 	}
 
     void Update()
