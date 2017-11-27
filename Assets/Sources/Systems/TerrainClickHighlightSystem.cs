@@ -6,19 +6,25 @@ using System;
 
 public class TerrainClickHighlightSystem : ReactiveSystem<InputEntity>
 {
+    private GameContext gameContext;
     private GameObject clickHighlightPrefab;
     public TerrainClickHighlightSystem(Contexts contexts, GameObject clickHighlightPrefab) : base(contexts.input)
     {
         this.clickHighlightPrefab = clickHighlightPrefab;
+        this.gameContext = contexts.game;
     }
 
     protected override void Execute(List<InputEntity> entities)
     {
         foreach (InputEntity entity in entities)
         {
-            GameObject newPrefab = GameObject.Instantiate(clickHighlightPrefab);
-            newPrefab.transform.position = entity.terrainClick.position;
-            newPrefab.transform.rotation = Quaternion.FromToRotation(Vector3.up, entity.terrainClick.normal);
+            //GameObject newPrefab = GameObject.Instantiate(clickHighlightPrefab);
+            //newPrefab.transform.position = entity.terrainClick.position;
+            //newPrefab.transform.rotation = Quaternion.FromToRotation(Vector3.up, entity.terrainClick.normal);
+            GameEntity newEntity = gameContext.CreateEntity();
+            newEntity.AddAsset("Prefabs/ClickHighlightPrefab");
+            newEntity.AddPosition(entity.terrainClick.position);
+            newEntity.AddRotation(Quaternion.FromToRotation(Vector3.up, entity.terrainClick.normal));
         }
     }
 

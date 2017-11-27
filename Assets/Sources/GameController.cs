@@ -12,7 +12,10 @@ public class GameController : MonoBehaviour {
         systems = new Feature("Systems")
             .Add(new InputSystem(context))
             .Add(new TerrainClickSystem(context))
-            .Add(new TerrainClickHighlightSystem(context, clickHighlightPrefab));
+            .Add(new TerrainClickHighlightSystem(context, clickHighlightPrefab))
+            .Add(new ViewFabricSystem(context))
+            .Add(new PositionSystem(context))
+            .Add(new RotationSystem(context));
         systems.Initialize();
 	}
 
