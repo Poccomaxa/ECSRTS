@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Entitas;
+using Entitas.Unity;
 using System;
 
 public class ViewCleanupSystem : ReactiveSystem<GameEntity> {
@@ -10,6 +11,7 @@ public class ViewCleanupSystem : ReactiveSystem<GameEntity> {
     protected override void Execute(List<GameEntity> entities) {
         foreach (var entity in entities)
         {
+            entity.view.gameObject.Unlink();
             GameObject.Destroy(entity.view.gameObject);
         }
     }

@@ -3,31 +3,35 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using Entitas;
+using Entitas.Unity;
 using System;
 
 public class SelectionSystem : ReactiveSystem<InputEntity>
 {
-    InputContext context;
-    IGroup<GameEntity> selectableEntites;
+    IGroup<InputEntity> group;
+    IGroup<GameEntity> selectedEntities;
 
     public SelectionSystem(Contexts contexts) : base(contexts.input)
     {
-        context = contexts.input;
-        selectableEntites = contexts.game.GetGroup(GameMatcher.Selectable);
+        group = contexts.input.GetGroup(InputMatcher.InputPointerPosition);
+        selectedEntities = contexts.game.GetGroup(GameMatcher.Selected);
     }
 
     protected override void Execute(List<InputEntity> entities)
     {
-        InputEntity pointerPosition = context.GetGroup(InputMatcher.InputPointerPosition).Last();
+        InputEntity pointerPosition = group.Last();
         foreach (var entity in entities)
         {
             Ray mouseRay = Camera.main.ScreenPointToRay(pointerPosition.inputPointerPosition.position);
             RaycastHit hit;
             if (Physics.Raycast(mouseRay, out hit, float.PositiveInfinity, LayerMask.GetMask("Selectable")))
             {
-                GameEntity selectedEntity = selectableEntites.GetEntities()
-                        .Where(sel => sel.hasView && sel.view.gameObject == hit.collider.gameObject).First();
-                selectedEntity.isSelected = true;
+                GameEntity linkedEntity = (GameEntity)hit.collider.gameObject.GetEntityLink().entity;
+                if (linkedEntity != null)
+                {
+                    DeselectAll();
+                    linkedEntity.isSelected = true;
+                }
             }
         }
     }
@@ -40,5 +44,13 @@ public class SelectionSystem : ReactiveSystem<InputEntity>
     protected override ICollector<InputEntity> GetTrigger(IContext<InputEntity> context)
     {
         return context.CreateCollector(InputMatcher.InputActionStarted.Added());
+    }
+
+    private void DeselectAll()
+    {
+        foreach (var entity in selectedEntities.GetEntities())
+        {
+            entity.isSelected = false;
+        }
     }
 }

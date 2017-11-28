@@ -16,10 +16,14 @@ public class NavigationTargetingSystem : ReactiveSystem<InputEntity> {
     protected override void Execute(List<InputEntity> entities) {
         foreach (var entity in entities) {
             foreach (var navEntity in navigationGroup.GetEntities()) {
-                navEntity.ReplaceNavigation(entity.terrainClick.position);
-                NavMeshAgent navAgent = navEntity.view.gameObject.GetComponent<NavMeshAgent>();
-                if (navAgent != null) {
-                    navAgent.destination = entity.terrainClick.position;
+                if (navEntity.isSelected)
+                {
+                    navEntity.ReplaceNavigation(entity.terrainClick.position);
+                    NavMeshAgent navAgent = navEntity.view.gameObject.GetComponent<NavMeshAgent>();
+                    if (navAgent != null)
+                    {
+                        navAgent.destination = entity.terrainClick.position;
+                    }
                 }
             }
         }

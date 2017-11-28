@@ -6,22 +6,31 @@ using System;
 
 public class SelectedHighlightSystem : ReactiveSystem<GameEntity>
 {
+    GameContext gameContext;
     public SelectedHighlightSystem(Contexts contexts) : base(contexts.game)
     {
-
+        gameContext = contexts.game;
     }
+
     protected override void Execute(List<GameEntity> entities)
     {
-        throw new NotImplementedException();
+        foreach (var entity in entities)
+        {
+            GameEntity selectionView = gameContext.CreateEntity();
+            selectionView.AddAsset("Prefabs/Selection");
+            selectionView.AddParentLink(entity.id.value);
+            selectionView.isFollowFloor = true;
+            selectionView.isSelection = true;
+        }
     }
 
     protected override bool Filter(GameEntity entity)
     {
-        throw new NotImplementedException();
+        return entity.isSelected;
     }
 
     protected override ICollector<GameEntity> GetTrigger(IContext<GameEntity> context)
     {
-        return context.CreateCollector(GameMatcher.Asset);
+        return context.CreateCollector(GameMatcher.Selected.Added());
     }
 }

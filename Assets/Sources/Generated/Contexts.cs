@@ -58,21 +58,41 @@ public partial class Contexts : Entitas.IContexts {
 //------------------------------------------------------------------------------
 public partial class Contexts {
 
+    public const string Id = "Id";
     public const string InputAction = "InputAction";
+    public const string ParentLink = "ParentLink";
 
     [Entitas.CodeGeneration.Attributes.PostConstructor]
     public void InitializeEntityIndices() {
+        game.AddEntityIndex(new Entitas.PrimaryEntityIndex<GameEntity, int>(
+            Id,
+            game.GetGroup(GameMatcher.Id),
+            (e, c) => ((IdComponent)c).value));
+
         input.AddEntityIndex(new Entitas.EntityIndex<InputEntity, InputAction>(
             InputAction,
             input.GetGroup(InputMatcher.InputAction),
             (e, c) => ((InputActionComponent)c).action));
+
+        game.AddEntityIndex(new Entitas.EntityIndex<GameEntity, int>(
+            ParentLink,
+            game.GetGroup(GameMatcher.ParentLink),
+            (e, c) => ((ParentLinkComponent)c).parentId));
     }
 }
 
 public static class ContextsExtensions {
 
+    public static GameEntity GetEntityWithId(this GameContext context, int value) {
+        return ((Entitas.PrimaryEntityIndex<GameEntity, int>)context.GetEntityIndex(Contexts.Id)).GetEntity(value);
+    }
+
     public static System.Collections.Generic.HashSet<InputEntity> GetEntitiesWithInputAction(this InputContext context, InputAction action) {
         return ((Entitas.EntityIndex<InputEntity, InputAction>)context.GetEntityIndex(Contexts.InputAction)).GetEntities(action);
+    }
+
+    public static System.Collections.Generic.HashSet<GameEntity> GetEntitiesWithParentLink(this GameContext context, int parentId) {
+        return ((Entitas.EntityIndex<GameEntity, int>)context.GetEntityIndex(Contexts.ParentLink)).GetEntities(parentId);
     }
 }
 //------------------------------------------------------------------------------

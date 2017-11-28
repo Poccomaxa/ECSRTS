@@ -2,12 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Entitas;
+using Entitas.Unity;
 using System;
 
-public class ViewFabricSystem : ReactiveSystem<GameEntity>
+public class ViewSetupSystem : ReactiveSystem<GameEntity>
 {
-    public ViewFabricSystem(Contexts contexts) : base(contexts.game)
+    GameContext context;
+    public ViewSetupSystem(Contexts contexts) : base(contexts.game)
     {
+        context = contexts.game;
     }
 
     protected override void Execute(List<GameEntity> entities)
@@ -16,6 +19,7 @@ public class ViewFabricSystem : ReactiveSystem<GameEntity>
         {
             var asset = Resources.Load<GameObject>(entity.asset.assetPath);
             GameObject gameObject = GameObject.Instantiate(asset);
+            gameObject.Link(entity, context);
             entity.AddView(gameObject);
         }
     }

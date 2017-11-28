@@ -15,14 +15,17 @@ public class StartGameSystem : IInitializeSystem
 
     public void Initialize()
     {
-        GameEntity entity = gameContext.CreateEntity();
-        entity.AddAsset("Prefabs/Unit");
-        entity.isSelectable = true;
-        Ray centerRay = Camera.main.ScreenPointToRay(Vector3.zero);
-        RaycastHit hit;
-        if (Physics.Raycast(centerRay, out hit))
+        for (int i = 0; i < 10; ++i)
         {
-            entity.AddNavigation(hit.point);
+            GameEntity entity = gameContext.CreateEntity();
+            entity.AddAsset("Prefabs/Unit");
+            entity.isSelectable = true;
+            Ray centerRay = Camera.main.ScreenPointToRay(Vector3.zero);
+            RaycastHit hit;
+            if (Physics.Raycast(centerRay, out hit))
+            {
+                entity.AddNavigation(hit.point);
+            }
         }
     }
 }

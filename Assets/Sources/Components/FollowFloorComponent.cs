@@ -3,5 +3,4 @@ using System.Collections.Generic;
 using UnityEngine;
 using Entitas;
 
-[Game]
-public class SelectedComponent : IComponent { }
+public class FollowFloorComponent : IComponent { }

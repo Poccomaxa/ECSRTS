@@ -13,16 +13,21 @@ public class GameController : MonoBehaviour {
             .Add(new InputSystem(context))
             .Add(new TerrainClickSystem(context))
             .Add(new TerrainClickHighlightSystem(context))
-            .Add(new ViewFabricSystem(context))
+            .Add(new ViewSetupSystem(context))
             .Add(new PositionSystem(context))
             .Add(new RotationSystem(context))
-            .Add(new SelectionSystem(context))
             .Add(new NavigationSetupSystem(context))
             .Add(new NavigationTargetingSystem(context))
             .Add(new NavigationSystem(context))
+            .Add(new SelectionSystem(context))
+            .Add(new SelectedHighlightSystem(context))
+            .Add(new SelectionCleanupSystem(context))
+            .Add(new FollowTerrainSystem(context))
             .Add(new DestroyCountdownSystem(context))
             .Add(new ViewCleanupSystem(context))
             .Add(new DestroyedCleanupSystem(context));
+
+        context.game.OnEntityCreated += AddId;
 
         systems.Initialize();
 	}
@@ -31,5 +36,10 @@ public class GameController : MonoBehaviour {
     {
         systems.Execute();
         systems.Cleanup();
+    }
+
+    private void AddId(IContext context, IEntity entity)
+    {
+        (entity as GameEntity).AddId(entity.creationIndex);
     }
 }
