@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 33543658570045784}
   - component: {fileID: 136012435062821100}
   - component: {fileID: 23858950361198524}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: ClickHighlightPrefab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -37,7 +37,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4672588224223480}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: ClickHighlightPrefab
   m_TagString: Untagged
   m_Icon: {fileID: 0}

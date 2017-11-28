@@ -8,13 +8,15 @@ public class GameController : MonoBehaviour {
 
 	void Start () {
         var context = Contexts.sharedInstance;
-        systems = new Feature("Systems")
+        systems = new Feature("Systems")            
+            .Add(new StartGameSystem(context))
             .Add(new InputSystem(context))
             .Add(new TerrainClickSystem(context))
             .Add(new TerrainClickHighlightSystem(context))
             .Add(new ViewFabricSystem(context))
             .Add(new PositionSystem(context))
             .Add(new RotationSystem(context))
+            .Add(new SelectionSystem(context))
             .Add(new NavigationSetupSystem(context))
             .Add(new NavigationTargetingSystem(context))
             .Add(new NavigationSystem(context))
@@ -23,14 +25,6 @@ public class GameController : MonoBehaviour {
             .Add(new DestroyedCleanupSystem(context));
 
         systems.Initialize();
-
-        GameEntity entity = context.game.CreateEntity();
-        entity.AddAsset("Prefabs/Unit");
-        Ray centerRay = Camera.main.ScreenPointToRay(Vector3.zero);
-        RaycastHit hit;
-        if (Physics.Raycast(centerRay, out hit)) {
-            entity.AddNavigation(hit.point);
-        }
 	}
 
     void Update()

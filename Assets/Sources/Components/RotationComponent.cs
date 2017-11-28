@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using Entitas;
 
-public class RotationComponent : IComponent {
+[Game]
+public class RotationComponent : IComponent
+{
     public Quaternion rotation;
 }

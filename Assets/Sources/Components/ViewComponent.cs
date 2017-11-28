@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using Entitas;
 
-public class ViewComponent : IComponent {
+[Game]
+public class ViewComponent : IComponent
+{
     public GameObject gameObject = null;
 }

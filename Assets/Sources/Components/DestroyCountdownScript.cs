@@ -5,6 +5,7 @@ using Entitas;
 using Entitas.CodeGeneration.Attributes;
 
 [Game]
-public class DestroyCountdownComponent : IComponent {
+public class DestroyCountdownComponent : IComponent
+{
     public float timeToLive;
 }

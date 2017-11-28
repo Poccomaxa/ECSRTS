@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using Entitas;
 
-public class AssetComponent : IComponent {
+[Game]
+public class AssetComponent : IComponent
+{
     public string assetPath;
 }

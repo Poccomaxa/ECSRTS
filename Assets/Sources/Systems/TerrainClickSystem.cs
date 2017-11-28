@@ -19,7 +19,7 @@ public class TerrainClickSystem : ReactiveSystem<InputEntity>, ICleanupSystem {
         {
             Ray pointRay = Camera.main.ScreenPointToRay(pointerPosition.inputPointerPosition.position);
             RaycastHit hit;
-            if (Physics.Raycast(pointRay, out hit))
+            if (Physics.Raycast(pointRay, out hit, float.PositiveInfinity, LayerMask.GetMask("Terrain")))
             {
                 inputContext.CreateEntity().AddTerrainClick(hit.point, hit.normal);
             }            

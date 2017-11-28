@@ -4,7 +4,4 @@ using UnityEngine;
 using Entitas;
 
 [Game]
-public class PositionComponent : IComponent
-{
-    public Vector3 position;
-}
+public class SelectedComponent : IComponent { }

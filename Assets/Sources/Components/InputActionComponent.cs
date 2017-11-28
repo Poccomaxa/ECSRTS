@@ -11,7 +11,8 @@ public enum InputAction
 }
 
 [Input]
-public class InputActionComponent : IComponent {
+public class InputActionComponent : IComponent
+{
     [EntityIndex]
     public InputAction action;
 }
