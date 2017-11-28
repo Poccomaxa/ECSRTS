@@ -38,12 +38,12 @@ public class SelectionSystem : ReactiveSystem<InputEntity>
 
     protected override bool Filter(InputEntity entity)
     {
-        return entity.isInputActionStarted && entity.hasInputAction && entity.inputAction.action == InputAction.SELECT;
+        return entity.isInputActionEnded && entity.hasInputAction && entity.inputAction.action == InputAction.SELECT;
     }
 
     protected override ICollector<InputEntity> GetTrigger(IContext<InputEntity> context)
     {
-        return context.CreateCollector(InputMatcher.InputActionStarted.Added());
+        return context.CreateCollector(InputMatcher.InputActionEnded.Added());
     }
 
     private void DeselectAll()

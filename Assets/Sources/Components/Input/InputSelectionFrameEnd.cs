@@ -3,5 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using Entitas;
 
-[Game, Input]
-public class DestroyedComponent : IComponent { }
+[Input]
+public class InputSelectionFrameEnd : IComponent
+{
+    public Vector3 position;
+}
