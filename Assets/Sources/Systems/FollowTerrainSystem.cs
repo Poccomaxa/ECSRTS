@@ -11,7 +11,7 @@ public class FollowTerrainSystem : IExecuteSystem
     public FollowTerrainSystem(Contexts contexts)
     {
         gameContext = contexts.game;
-        group = contexts.game.GetGroup(GameMatcher.FollowFloor);
+        group = contexts.game.GetGroup(GameMatcher.FollowTerrain);
     }
 
     public void Execute()

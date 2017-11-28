@@ -3,4 +3,4 @@ using System.Collections.Generic;
 using UnityEngine;
 using Entitas;
 
-public class FollowFloorComponent : IComponent { }
+public class FollowTerrainComponent : IComponent { }

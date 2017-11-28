@@ -19,7 +19,7 @@ public class SelectedHighlightSystem : ReactiveSystem<GameEntity>
             GameEntity selectionView = gameContext.CreateEntity();
             selectionView.AddAsset("Prefabs/Selection");
             selectionView.AddParentLink(entity.id.value);
-            selectionView.isFollowFloor = true;
+            selectionView.isFollowTerrain = true;
             selectionView.isSelection = true;
         }
     }

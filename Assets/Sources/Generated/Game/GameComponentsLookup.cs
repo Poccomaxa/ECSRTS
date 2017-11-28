@@ -11,7 +11,7 @@ public static class GameComponentsLookup {
     public const int Asset = 0;
     public const int DestroyCountdown = 1;
     public const int Destroyed = 2;
-    public const int FollowFloor = 3;
+    public const int FollowTerrain = 3;
     public const int Id = 4;
     public const int Navigation = 5;
     public const int ParentLink = 6;
@@ -28,7 +28,7 @@ public static class GameComponentsLookup {
         "Asset",
         "DestroyCountdown",
         "Destroyed",
-        "FollowFloor",
+        "FollowTerrain",
         "Id",
         "Navigation",
         "ParentLink",
@@ -44,7 +44,7 @@ public static class GameComponentsLookup {
         typeof(AssetComponent),
         typeof(DestroyCountdownComponent),
         typeof(DestroyedComponent),
-        typeof(FollowFloorComponent),
+        typeof(FollowTerrainComponent),
         typeof(IdComponent),
         typeof(NavigationComponent),
         typeof(ParentLinkComponent),

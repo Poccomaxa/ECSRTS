@@ -8,18 +8,18 @@
 //------------------------------------------------------------------------------
 public partial class GameEntity {
 
-    static readonly FollowFloorComponent followFloorComponent = new FollowFloorComponent();
+    static readonly FollowTerrainComponent followTerrainComponent = new FollowTerrainComponent();
 
-    public bool isFollowFloor {
-        get { return HasComponent(GameComponentsLookup.FollowFloor); }
+    public bool isFollowTerrain {
+        get { return HasComponent(GameComponentsLookup.FollowTerrain); }
         set {
-            if (value != isFollowFloor) {
-                var index = GameComponentsLookup.FollowFloor;
+            if (value != isFollowTerrain) {
+                var index = GameComponentsLookup.FollowTerrain;
                 if (value) {
                     var componentPool = GetComponentPool(index);
                     var component = componentPool.Count > 0
                             ? componentPool.Pop()
-                            : followFloorComponent;
+                            : followTerrainComponent;
 
                     AddComponent(index, component);
                 } else {
@@ -40,17 +40,17 @@ public partial class GameEntity {
 //------------------------------------------------------------------------------
 public sealed partial class GameMatcher {
 
-    static Entitas.IMatcher<GameEntity> _matcherFollowFloor;
+    static Entitas.IMatcher<GameEntity> _matcherFollowTerrain;
 
-    public static Entitas.IMatcher<GameEntity> FollowFloor {
+    public static Entitas.IMatcher<GameEntity> FollowTerrain {
         get {
-            if (_matcherFollowFloor == null) {
-                var matcher = (Entitas.Matcher<GameEntity>)Entitas.Matcher<GameEntity>.AllOf(GameComponentsLookup.FollowFloor);
+            if (_matcherFollowTerrain == null) {
+                var matcher = (Entitas.Matcher<GameEntity>)Entitas.Matcher<GameEntity>.AllOf(GameComponentsLookup.FollowTerrain);
                 matcher.componentNames = GameComponentsLookup.componentNames;
-                _matcherFollowFloor = matcher;
+                _matcherFollowTerrain = matcher;
             }
 
-            return _matcherFollowFloor;
+            return _matcherFollowTerrain;
         }
     }
 }
