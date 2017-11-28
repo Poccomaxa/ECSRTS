@@ -28,6 +28,7 @@ public class GameController : MonoBehaviour {
             .Add(new DestroyedCleanupSystem(context));
 
         context.game.OnEntityCreated += AddId;
+        context.input.OnEntityCreated += AddId;
 
         systems.Initialize();
 	}
@@ -40,6 +41,6 @@ public class GameController : MonoBehaviour {
 
     private void AddId(IContext context, IEntity entity)
     {
-        (entity as GameEntity).AddId(entity.creationIndex);
+        (entity as IId).AddId(entity.creationIndex);
     }
 }

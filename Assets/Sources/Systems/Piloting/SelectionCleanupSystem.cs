@@ -21,6 +21,7 @@ public class SelectionCleanupSystem : ReactiveSystem<GameEntity>
                 if (child.isSelection)
                 {
                     child.isDestroyed = true;
+                    break;
                 }
             }
         }

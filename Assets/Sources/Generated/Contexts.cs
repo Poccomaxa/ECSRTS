@@ -64,6 +64,10 @@ public partial class Contexts {
 
     [Entitas.CodeGeneration.Attributes.PostConstructor]
     public void InitializeEntityIndices() {
+        input.AddEntityIndex(new Entitas.PrimaryEntityIndex<InputEntity, int>(
+            Id,
+            input.GetGroup(InputMatcher.Id),
+            (e, c) => ((IdComponent)c).value));
         game.AddEntityIndex(new Entitas.PrimaryEntityIndex<GameEntity, int>(
             Id,
             game.GetGroup(GameMatcher.Id),
@@ -82,6 +86,10 @@ public partial class Contexts {
 }
 
 public static class ContextsExtensions {
+
+    public static InputEntity GetEntityWithId(this InputContext context, int value) {
+        return ((Entitas.PrimaryEntityIndex<InputEntity, int>)context.GetEntityIndex(Contexts.Id)).GetEntity(value);
+    }
 
     public static GameEntity GetEntityWithId(this GameContext context, int value) {
         return ((Entitas.PrimaryEntityIndex<GameEntity, int>)context.GetEntityIndex(Contexts.Id)).GetEntity(value);

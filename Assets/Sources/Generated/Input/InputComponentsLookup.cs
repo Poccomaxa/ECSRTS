@@ -8,18 +8,22 @@
 //------------------------------------------------------------------------------
 public static class InputComponentsLookup {
 
-    public const int InputActionActive = 0;
-    public const int InputAction = 1;
-    public const int InputActionEnded = 2;
-    public const int InputActionStarted = 3;
-    public const int InputPointerPosition = 4;
-    public const int InputSelectionFrameEnd = 5;
-    public const int InputSelectionFrameStart = 6;
-    public const int TerrainClick = 7;
+    public const int Destroyed = 0;
+    public const int Id = 1;
+    public const int InputActionActive = 2;
+    public const int InputAction = 3;
+    public const int InputActionEnded = 4;
+    public const int InputActionStarted = 5;
+    public const int InputPointerPosition = 6;
+    public const int InputSelectionFrameEnd = 7;
+    public const int InputSelectionFrameStart = 8;
+    public const int TerrainClick = 9;
 
-    public const int TotalComponents = 8;
+    public const int TotalComponents = 10;
 
     public static readonly string[] componentNames = {
+        "Destroyed",
+        "Id",
         "InputActionActive",
         "InputAction",
         "InputActionEnded",
@@ -31,6 +35,8 @@ public static class InputComponentsLookup {
     };
 
     public static readonly System.Type[] componentTypes = {
+        typeof(DestroyedComponent),
+        typeof(IdComponent),
         typeof(InputActionActiveComponent),
         typeof(InputActionComponent),
         typeof(InputActionEndedComponent),
