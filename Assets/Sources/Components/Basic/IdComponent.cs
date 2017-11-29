@@ -4,7 +4,7 @@ using UnityEngine;
 using Entitas;
 using Entitas.CodeGeneration.Attributes;
 
-[Game, Input]
+[Game, Input, Ui]
 public class IdComponent : IComponent
 {
     [PrimaryEntityIndex]

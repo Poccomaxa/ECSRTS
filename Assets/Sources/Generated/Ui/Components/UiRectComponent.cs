@@ -6,27 +6,27 @@
 //     the code is regenerated.
 // </auto-generated>
 //------------------------------------------------------------------------------
-public partial class GameEntity {
+public partial class UiEntity {
 
-    public RectComponent rect { get { return (RectComponent)GetComponent(GameComponentsLookup.Rect); } }
-    public bool hasRect { get { return HasComponent(GameComponentsLookup.Rect); } }
+    public RectComponent rect { get { return (RectComponent)GetComponent(UiComponentsLookup.Rect); } }
+    public bool hasRect { get { return HasComponent(UiComponentsLookup.Rect); } }
 
     public void AddRect(UnityEngine.Rect newRect) {
-        var index = GameComponentsLookup.Rect;
+        var index = UiComponentsLookup.Rect;
         var component = CreateComponent<RectComponent>(index);
         component.rect = newRect;
         AddComponent(index, component);
     }
 
     public void ReplaceRect(UnityEngine.Rect newRect) {
-        var index = GameComponentsLookup.Rect;
+        var index = UiComponentsLookup.Rect;
         var component = CreateComponent<RectComponent>(index);
         component.rect = newRect;
         ReplaceComponent(index, component);
     }
 
     public void RemoveRect() {
-        RemoveComponent(GameComponentsLookup.Rect);
+        RemoveComponent(UiComponentsLookup.Rect);
     }
 }
 
@@ -38,15 +38,15 @@ public partial class GameEntity {
 //     the code is regenerated.
 // </auto-generated>
 //------------------------------------------------------------------------------
-public sealed partial class GameMatcher {
+public sealed partial class UiMatcher {
 
-    static Entitas.IMatcher<GameEntity> _matcherRect;
+    static Entitas.IMatcher<UiEntity> _matcherRect;
 
-    public static Entitas.IMatcher<GameEntity> Rect {
+    public static Entitas.IMatcher<UiEntity> Rect {
         get {
             if (_matcherRect == null) {
-                var matcher = (Entitas.Matcher<GameEntity>)Entitas.Matcher<GameEntity>.AllOf(GameComponentsLookup.Rect);
-                matcher.componentNames = GameComponentsLookup.componentNames;
+                var matcher = (Entitas.Matcher<UiEntity>)Entitas.Matcher<UiEntity>.AllOf(UiComponentsLookup.Rect);
+                matcher.componentNames = UiComponentsLookup.componentNames;
                 _matcherRect = matcher;
             }
 

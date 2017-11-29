@@ -9,6 +9,7 @@ public interface IDestroyEntity : IEntity, IDestroyed { }
 
 public partial class GameEntity : IDestroyEntity { }
 public partial class InputEntity : IDestroyEntity { }
+public partial class UiEntity : IDestroyEntity { }
 
 public class DestroyedCleanupSystem : MultiReactiveSystem<IDestroyEntity, Contexts>
 {
@@ -32,7 +33,8 @@ public class DestroyedCleanupSystem : MultiReactiveSystem<IDestroyEntity, Contex
         return new ICollector[]
         {
             contexts.game.CreateCollector(GameMatcher.Destroyed),
-            contexts.input.CreateCollector(InputMatcher.Destroyed)
+            contexts.input.CreateCollector(InputMatcher.Destroyed),
+            contexts.ui.CreateCollector(UiMatcher.Destroyed)
         };
     }
 }

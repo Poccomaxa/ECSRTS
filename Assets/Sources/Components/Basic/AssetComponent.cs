@@ -4,7 +4,7 @@ using UnityEngine;
 using Entitas;
 using Entitas.CodeGeneration.Attributes;
 
-[Game]
+[Game, Ui]
 public class AssetComponent : IComponent
 {
     public string assetPath;

@@ -5,10 +5,15 @@ using Entitas;
 using Entitas.Unity;
 using System;
 
-public class ViewCleanupSystem : ReactiveSystem<GameEntity> {
-    public ViewCleanupSystem(Contexts contexts) : base(contexts.game) { }
+public interface IViewEntity : IEntity, IView { }
 
-    protected override void Execute(List<GameEntity> entities) {
+public partial class GameEntity : IViewEntity { }
+public partial class UiEntity : IViewEntity { }
+
+public class ViewCleanupSystem : MultiReactiveSystem<IViewEntity, Contexts> {
+    public ViewCleanupSystem(Contexts contexts) : base(contexts) { }
+
+    protected override void Execute(List<IViewEntity> entities) {
         foreach (var entity in entities)
         {
             entity.view.gameObject.Unlink();
@@ -16,11 +21,15 @@ public class ViewCleanupSystem : ReactiveSystem<GameEntity> {
         }
     }
 
-    protected override bool Filter(GameEntity entity) {
+    protected override bool Filter(IViewEntity entity) {
         return entity.hasView;
     }
 
-    protected override ICollector<GameEntity> GetTrigger(IContext<GameEntity> context) {
-        return context.CreateCollector(GameMatcher.Destroyed);
+    protected override ICollector[] GetTrigger(Contexts contexts) {
+        return new ICollector[]
+        {
+            contexts.game.CreateCollector(GameMatcher.Destroyed),
+            contexts.ui.CreateCollector(UiMatcher.Destroyed)
+        };
     }
 }

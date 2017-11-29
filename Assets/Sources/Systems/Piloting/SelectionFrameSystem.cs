@@ -5,46 +5,54 @@ using Entitas;
 using System;
 using System.Linq;
 
-public class SelectionFrameSystem : IExecuteSystem
+public class SelectionFrameSystem : ReactiveSystem<InputEntity>
 {
-    public ICollector<InputEntity> actionStarted;
-    public ICollector<InputEntity> actionEnded;
     public IGroup<InputEntity> frameStarted;
     public InputContext inputContext;
-    IGroup<InputEntity> group;
+    IGroup<InputEntity> pointerGroup;
 
-    SelectionFrameSystem(Contexts contexts)
+    public SelectionFrameSystem(Contexts contexts) : base(contexts.input)
     {
-        group = contexts.input.GetGroup(InputMatcher.InputPointerPosition);
-        actionStarted = contexts.input.CreateCollector(InputMatcher.InputActionStarted.Added());
-        actionEnded = contexts.input.CreateCollector(InputMatcher.InputActionEnded.Added());
+        pointerGroup = contexts.input.GetGroup(InputMatcher.InputPointerPosition);
         frameStarted = contexts.input.GetGroup(InputMatcher.InputSelectionFrameStart);
         inputContext = contexts.input;
     }
 
-    public void Execute()
+    protected override ICollector<InputEntity> GetTrigger(IContext<InputEntity> context)
     {
-        InputEntity pointerPosition = group.Last();
-        foreach (var entity in actionStarted.GetCollectedEntities<InputEntity>())
+        return context.CreateCollector(InputMatcher.AnyOf(InputMatcher.InputActionStarted,
+            InputMatcher.InputActionEnded, InputMatcher.InputActionActive));
+    }
+
+    protected override bool Filter(InputEntity entity)
+    {
+        return entity.hasInputAction && entity.inputAction.action == InputAction.SELECT;
+    }
+
+    protected override void Execute(List<InputEntity> entities)
+    {
+        InputEntity pointerPosition = pointerGroup.Last();
+        foreach (var entity in entities)
         {
-            if (entity.hasInputAction && entity.inputAction.action == InputAction.SELECT)
+            if (entity.isInputActionStarted)
             {
                 InputEntity frameEntity = inputContext.CreateEntity();
                 frameEntity.AddInputSelectionFrameStart(pointerPosition.inputPointerPosition.position);
-                frameEntity.AddInputSelectionFrameEnd(pointerPosition.inputPointerPosition.position);
+                frameEntity.AddInputSelectionFrameEnd(pointerPosition.inputPointerPosition.position);                
+            }
+
+            if (entity.isInputActionEnded)
+            {
+                foreach (var cleanEntities in frameStarted.GetEntities())
+                {
+                    cleanEntities.isDestroyed = true;
+                }
             }
         }
-        actionStarted.ClearCollectedEntities();
 
         foreach (var entity in frameStarted.GetEntities())
         {
             entity.ReplaceInputSelectionFrameEnd(pointerPosition.inputPointerPosition.position);
         }
-
-        foreach (var entity in actionEnded.GetCollectedEntities<InputEntity>())
-        {
-            
-        }
-        actionEnded.ClearCollectedEntities();
     }
 }

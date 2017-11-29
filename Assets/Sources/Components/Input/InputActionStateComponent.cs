@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Entitas;
+using Entitas.CodeGeneration.Attributes;
 
 [Input]
 public class InputActionStartedComponent : IComponent { }

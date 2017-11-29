@@ -23,12 +23,14 @@ public partial class Contexts : Entitas.IContexts {
 
     public GameContext game { get; set; }
     public InputContext input { get; set; }
+    public UiContext ui { get; set; }
 
-    public Entitas.IContext[] allContexts { get { return new Entitas.IContext [] { game, input }; } }
+    public Entitas.IContext[] allContexts { get { return new Entitas.IContext [] { game, input, ui }; } }
 
     public Contexts() {
         game = new GameContext();
         input = new InputContext();
+        ui = new UiContext();
 
         var postConstructors = System.Linq.Enumerable.Where(
             GetType().GetMethods(),
@@ -64,6 +66,10 @@ public partial class Contexts {
 
     [Entitas.CodeGeneration.Attributes.PostConstructor]
     public void InitializeEntityIndices() {
+        ui.AddEntityIndex(new Entitas.PrimaryEntityIndex<UiEntity, int>(
+            Id,
+            ui.GetGroup(UiMatcher.Id),
+            (e, c) => ((IdComponent)c).value));
         input.AddEntityIndex(new Entitas.PrimaryEntityIndex<InputEntity, int>(
             Id,
             input.GetGroup(InputMatcher.Id),
@@ -86,6 +92,10 @@ public partial class Contexts {
 }
 
 public static class ContextsExtensions {
+
+    public static UiEntity GetEntityWithId(this UiContext context, int value) {
+        return ((Entitas.PrimaryEntityIndex<UiEntity, int>)context.GetEntityIndex(Contexts.Id)).GetEntity(value);
+    }
 
     public static InputEntity GetEntityWithId(this InputContext context, int value) {
         return ((Entitas.PrimaryEntityIndex<InputEntity, int>)context.GetEntityIndex(Contexts.Id)).GetEntity(value);
@@ -120,6 +130,7 @@ public partial class Contexts {
         try {
             CreateContextObserver(game);
             CreateContextObserver(input);
+            CreateContextObserver(ui);
         } catch(System.Exception) {
         }
     }
