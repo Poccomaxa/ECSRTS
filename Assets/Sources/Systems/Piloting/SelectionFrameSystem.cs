@@ -45,7 +45,13 @@ public class SelectionFrameSystem : ReactiveSystem<InputEntity>
             {
                 foreach (var cleanEntities in frameStarted.GetEntities())
                 {
-                    cleanEntities.isDestroyed = true;
+                    if (cleanEntities.hasInputSelectionFrameStart && cleanEntities.hasInputSelectionFrameEnd)
+                    {
+                        InputEntity selection = inputContext.CreateEntity();
+                        selection.AddInputSelectionFrame(RectUtils.CreateFromPoints(cleanEntities.inputSelectionFrameStart.position,
+                            cleanEntities.inputSelectionFrameEnd.position));
+                        cleanEntities.isDestroyed = true;
+                    }
                 }
             }
         }

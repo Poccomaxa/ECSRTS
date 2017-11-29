@@ -18,7 +18,7 @@ public class SelectionCleanupSystem : ReactiveSystem<GameEntity>
             var childs = gameContext.GetEntitiesWithParentLink(entity.id.value);
             foreach (var child in childs)
             {
-                if (child.isSelection)
+                if (child.isUnitSelection)
                 {
                     child.isDestroyed = true;
                     break;

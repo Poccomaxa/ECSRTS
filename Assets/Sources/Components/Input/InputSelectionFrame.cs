@@ -4,4 +4,8 @@ using UnityEngine;
 using Entitas;
 using Entitas.CodeGeneration.Attributes;
 
-public class SelectionComponent : IComponent { }
+[Input]
+public class InputSelectionFrame : IComponent
+{
+    public Rect rect;
+}

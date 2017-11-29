@@ -20,7 +20,7 @@ public class SelectedHighlightSystem : ReactiveSystem<GameEntity>
             selectionView.AddAsset("Prefabs/Selection");
             selectionView.AddParentLink(entity.id.value);
             selectionView.isFollowTerrain = true;
-            selectionView.isSelection = true;
+            selectionView.isUnitSelection = true;
         }
     }
 

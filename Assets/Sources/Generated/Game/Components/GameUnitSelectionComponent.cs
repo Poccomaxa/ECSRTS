@@ -8,18 +8,18 @@
 //------------------------------------------------------------------------------
 public partial class GameEntity {
 
-    static readonly SelectionComponent selectionComponent = new SelectionComponent();
+    static readonly UnitSelectionComponent unitSelectionComponent = new UnitSelectionComponent();
 
-    public bool isSelection {
-        get { return HasComponent(GameComponentsLookup.Selection); }
+    public bool isUnitSelection {
+        get { return HasComponent(GameComponentsLookup.UnitSelection); }
         set {
-            if (value != isSelection) {
-                var index = GameComponentsLookup.Selection;
+            if (value != isUnitSelection) {
+                var index = GameComponentsLookup.UnitSelection;
                 if (value) {
                     var componentPool = GetComponentPool(index);
                     var component = componentPool.Count > 0
                             ? componentPool.Pop()
-                            : selectionComponent;
+                            : unitSelectionComponent;
 
                     AddComponent(index, component);
                 } else {
@@ -40,17 +40,17 @@ public partial class GameEntity {
 //------------------------------------------------------------------------------
 public sealed partial class GameMatcher {
 
-    static Entitas.IMatcher<GameEntity> _matcherSelection;
+    static Entitas.IMatcher<GameEntity> _matcherUnitSelection;
 
-    public static Entitas.IMatcher<GameEntity> Selection {
+    public static Entitas.IMatcher<GameEntity> UnitSelection {
         get {
-            if (_matcherSelection == null) {
-                var matcher = (Entitas.Matcher<GameEntity>)Entitas.Matcher<GameEntity>.AllOf(GameComponentsLookup.Selection);
+            if (_matcherUnitSelection == null) {
+                var matcher = (Entitas.Matcher<GameEntity>)Entitas.Matcher<GameEntity>.AllOf(GameComponentsLookup.UnitSelection);
                 matcher.componentNames = GameComponentsLookup.componentNames;
-                _matcherSelection = matcher;
+                _matcherUnitSelection = matcher;
             }
 
-            return _matcherSelection;
+            return _matcherUnitSelection;
         }
     }
 }

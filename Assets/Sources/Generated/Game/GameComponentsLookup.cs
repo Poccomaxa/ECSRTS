@@ -19,7 +19,7 @@ public static class GameComponentsLookup {
     public const int Rotation = 8;
     public const int Selectable = 9;
     public const int Selected = 10;
-    public const int Selection = 11;
+    public const int UnitSelection = 11;
     public const int View = 12;
 
     public const int TotalComponents = 13;
@@ -36,7 +36,7 @@ public static class GameComponentsLookup {
         "Rotation",
         "Selectable",
         "Selected",
-        "Selection",
+        "UnitSelection",
         "View"
     };
 
@@ -52,7 +52,7 @@ public static class GameComponentsLookup {
         typeof(RotationComponent),
         typeof(SelectableComponent),
         typeof(SelectedComponent),
-        typeof(SelectionComponent),
+        typeof(UnitSelectionComponent),
         typeof(ViewComponent)
     };
 }
