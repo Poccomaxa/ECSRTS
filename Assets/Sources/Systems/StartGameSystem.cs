@@ -24,7 +24,8 @@ public class StartGameSystem : IInitializeSystem
             RaycastHit hit;
             if (Physics.Raycast(centerRay, out hit))
             {
-                entity.AddNavigation(hit.point);
+                entity.isNavigationAgent = true;
+                entity.AddNavigationTarget(hit.point);
             }
         }
     }

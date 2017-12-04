@@ -20,8 +20,7 @@ public class SelectionFrameUISystem : ReactiveSystem<InputEntity> {
                 Vector3 sPos = entity.inputSelectionFrameStart.position;
                 Vector3 ePos = entity.inputSelectionFrameEnd.position;
 
-                Rect builtRect = Rect.MinMaxRect(Mathf.Min(sPos.x, ePos.x), Mathf.Min(sPos.y, ePos.y),
-                        Mathf.Max(sPos.x, ePos.x), Mathf.Max(sPos.y, ePos.y));
+                Rect builtRect = RectUtils.CreateFromPoints(sPos, ePos);
 
                 UiEntity rectEntity = uiContext.selectionUiEntity;
                 if (rectEntity == null)

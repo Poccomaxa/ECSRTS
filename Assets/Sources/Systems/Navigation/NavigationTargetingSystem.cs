@@ -10,7 +10,7 @@ public class NavigationTargetingSystem : ReactiveSystem<InputEntity> {
     IGroup<GameEntity> navigationGroup;
     public NavigationTargetingSystem(Contexts contexts) : base(contexts.input) {
         gameContext = contexts.game;
-        navigationGroup = gameContext.GetGroup(GameMatcher.Navigation);
+        navigationGroup = gameContext.GetGroup(GameMatcher.NavigationAgent);
     }
 
     protected override void Execute(List<InputEntity> entities) {
@@ -18,11 +18,13 @@ public class NavigationTargetingSystem : ReactiveSystem<InputEntity> {
             foreach (var navEntity in navigationGroup.GetEntities()) {
                 if (navEntity.isSelected)
                 {
-                    navEntity.ReplaceNavigation(entity.terrainClick.position);
+                    navEntity.ReplaceNavigationTarget(entity.terrainClick.position);
+                    navEntity.ReplaceNavigationApproach(float.PositiveInfinity, 0);
                     NavMeshAgent navAgent = navEntity.view.gameObject.GetComponent<NavMeshAgent>();
                     if (navAgent != null)
                     {
                         navAgent.destination = entity.terrainClick.position;
+                        navAgent.isStopped = false;
                     }
                 }
             }

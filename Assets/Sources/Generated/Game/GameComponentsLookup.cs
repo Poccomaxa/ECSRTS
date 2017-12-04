@@ -13,16 +13,21 @@ public static class GameComponentsLookup {
     public const int Destroyed = 2;
     public const int FollowTerrain = 3;
     public const int Id = 4;
-    public const int Navigation = 5;
-    public const int ParentLink = 6;
-    public const int Position = 7;
-    public const int Rotation = 8;
-    public const int Selectable = 9;
-    public const int Selected = 10;
-    public const int UnitSelection = 11;
-    public const int View = 12;
+    public const int NavigationAgent = 5;
+    public const int NavigationApproach = 6;
+    public const int NavigationDebug = 7;
+    public const int NavigationObstacle = 8;
+    public const int NavigationPrevDistance = 9;
+    public const int NavigationTarget = 10;
+    public const int ParentLink = 11;
+    public const int Position = 12;
+    public const int Rotation = 13;
+    public const int Selectable = 14;
+    public const int Selected = 15;
+    public const int UnitSelection = 16;
+    public const int View = 17;
 
-    public const int TotalComponents = 13;
+    public const int TotalComponents = 18;
 
     public static readonly string[] componentNames = {
         "Asset",
@@ -30,7 +35,12 @@ public static class GameComponentsLookup {
         "Destroyed",
         "FollowTerrain",
         "Id",
-        "Navigation",
+        "NavigationAgent",
+        "NavigationApproach",
+        "NavigationDebug",
+        "NavigationObstacle",
+        "NavigationPrevDistance",
+        "NavigationTarget",
         "ParentLink",
         "Position",
         "Rotation",
@@ -46,7 +56,12 @@ public static class GameComponentsLookup {
         typeof(DestroyedComponent),
         typeof(FollowTerrainComponent),
         typeof(IdComponent),
-        typeof(NavigationComponent),
+        typeof(NavigationAgentComponent),
+        typeof(NavigationApproachComponent),
+        typeof(NavigationDebugComponent),
+        typeof(NavigationObstacleComponent),
+        typeof(NavigationPrevDistanceComponent),
+        typeof(NavigationTargetComponent),
         typeof(ParentLinkComponent),
         typeof(PositionComponent),
         typeof(RotationComponent),
