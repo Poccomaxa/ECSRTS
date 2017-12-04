@@ -21,13 +21,16 @@ public static class GameComponentsLookup {
     public const int NavigationTarget = 10;
     public const int ParentLink = 11;
     public const int Position = 12;
-    public const int Rotation = 13;
-    public const int Selectable = 14;
-    public const int Selected = 15;
-    public const int UnitSelection = 16;
-    public const int View = 17;
+    public const int Resource = 13;
+    public const int ResourceQuantity = 14;
+    public const int ResourceSource = 15;
+    public const int Rotation = 16;
+    public const int Selectable = 17;
+    public const int Selected = 18;
+    public const int UnitSelection = 19;
+    public const int View = 20;
 
-    public const int TotalComponents = 18;
+    public const int TotalComponents = 21;
 
     public static readonly string[] componentNames = {
         "Asset",
@@ -43,6 +46,9 @@ public static class GameComponentsLookup {
         "NavigationTarget",
         "ParentLink",
         "Position",
+        "Resource",
+        "ResourceQuantity",
+        "ResourceSource",
         "Rotation",
         "Selectable",
         "Selected",
@@ -64,6 +70,9 @@ public static class GameComponentsLookup {
         typeof(NavigationTargetComponent),
         typeof(ParentLinkComponent),
         typeof(PositionComponent),
+        typeof(ResourceComponent),
+        typeof(ResourceQuantity),
+        typeof(ResourceSourceComponent),
         typeof(RotationComponent),
         typeof(SelectableComponent),
         typeof(SelectedComponent),

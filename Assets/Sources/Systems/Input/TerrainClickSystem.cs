@@ -25,7 +25,7 @@ public class TerrainClickSystem : ReactiveSystem<InputEntity>, ICleanupSystem {
                 EntityLink entityLink = hit.collider.gameObject.GetEntityLink();
                 if (entityLink != null)
                 {                    
-                    inputContext.CreateEntity().AddInteractibleClick((entityLink.entity as IId).id.value);
+                    inputContext.CreateEntity().AddInteractableClick((entityLink.entity as IId).id.value);
                 }
             } else if (Physics.Raycast(pointRay, out hit, float.PositiveInfinity, LayerMask.GetMask("Terrain")))
             {

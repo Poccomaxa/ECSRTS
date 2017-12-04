@@ -5,9 +5,11 @@ using UnityEngine.AI;
 using Entitas;
 using System;
 
-public class NavigationSystem : IExecuteSystem {
+public class NavigationSystem : IExecuteSystem
+{
     IGroup<GameEntity> navAgents;
-    public NavigationSystem(Contexts contexts){
+    public NavigationSystem(Contexts contexts)
+    {
         navAgents = contexts.game.GetGroup(GameMatcher.NavigationAgent);
     }
 
@@ -44,6 +46,11 @@ public class NavigationSystem : IExecuteSystem {
                 agent.isStopped = true;
                 entity.RemoveNavigationTarget();
                 entity.RemoveNavigationApproach();
+            }
+
+            if (!agent.pathPending && agent.remainingDistance <= agent.stoppingDistance && !agent.hasPath || agent.velocity.sqrMagnitude == 0f)
+            {
+                //Debug.Log("I'm here!");
             }
         }
     }

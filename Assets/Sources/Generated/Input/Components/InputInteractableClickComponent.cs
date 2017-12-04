@@ -8,25 +8,25 @@
 //------------------------------------------------------------------------------
 public partial class InputEntity {
 
-    public InteractibleClickComponent interactibleClick { get { return (InteractibleClickComponent)GetComponent(InputComponentsLookup.InteractibleClick); } }
-    public bool hasInteractibleClick { get { return HasComponent(InputComponentsLookup.InteractibleClick); } }
+    public InteractableClickComponent interactableClick { get { return (InteractableClickComponent)GetComponent(InputComponentsLookup.InteractableClick); } }
+    public bool hasInteractableClick { get { return HasComponent(InputComponentsLookup.InteractableClick); } }
 
-    public void AddInteractibleClick(int newEntityId) {
-        var index = InputComponentsLookup.InteractibleClick;
-        var component = CreateComponent<InteractibleClickComponent>(index);
+    public void AddInteractableClick(int newEntityId) {
+        var index = InputComponentsLookup.InteractableClick;
+        var component = CreateComponent<InteractableClickComponent>(index);
         component.entityId = newEntityId;
         AddComponent(index, component);
     }
 
-    public void ReplaceInteractibleClick(int newEntityId) {
-        var index = InputComponentsLookup.InteractibleClick;
-        var component = CreateComponent<InteractibleClickComponent>(index);
+    public void ReplaceInteractableClick(int newEntityId) {
+        var index = InputComponentsLookup.InteractableClick;
+        var component = CreateComponent<InteractableClickComponent>(index);
         component.entityId = newEntityId;
         ReplaceComponent(index, component);
     }
 
-    public void RemoveInteractibleClick() {
-        RemoveComponent(InputComponentsLookup.InteractibleClick);
+    public void RemoveInteractableClick() {
+        RemoveComponent(InputComponentsLookup.InteractableClick);
     }
 }
 
@@ -40,17 +40,17 @@ public partial class InputEntity {
 //------------------------------------------------------------------------------
 public sealed partial class InputMatcher {
 
-    static Entitas.IMatcher<InputEntity> _matcherInteractibleClick;
+    static Entitas.IMatcher<InputEntity> _matcherInteractableClick;
 
-    public static Entitas.IMatcher<InputEntity> InteractibleClick {
+    public static Entitas.IMatcher<InputEntity> InteractableClick {
         get {
-            if (_matcherInteractibleClick == null) {
-                var matcher = (Entitas.Matcher<InputEntity>)Entitas.Matcher<InputEntity>.AllOf(InputComponentsLookup.InteractibleClick);
+            if (_matcherInteractableClick == null) {
+                var matcher = (Entitas.Matcher<InputEntity>)Entitas.Matcher<InputEntity>.AllOf(InputComponentsLookup.InteractableClick);
                 matcher.componentNames = InputComponentsLookup.componentNames;
-                _matcherInteractibleClick = matcher;
+                _matcherInteractableClick = matcher;
             }
 
-            return _matcherInteractibleClick;
+            return _matcherInteractableClick;
         }
     }
 }

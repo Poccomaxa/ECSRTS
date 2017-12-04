@@ -6,7 +6,7 @@ using UnityEngine;
 public class GameController : MonoBehaviour {
     private Systems systems;
 
-	void Start () {
+	void Awake () {
         var context = Contexts.sharedInstance;
         systems = new Feature("Systems")            
             .Add(new StartGameSystem(context))
@@ -23,6 +23,7 @@ public class GameController : MonoBehaviour {
             .Add(new ViewSetupSystem(context))
             .Add(new NavigationSetupSystem(context))
             .Add(new NavigationTerrainClickSystem(context))
+            .Add(new NavigationToObjectSystem(context))
             .Add(new NavigationTargetingSystem(context))
             .Add(new NavigationSystem(context))
             .Add(new PositionSystem(context))

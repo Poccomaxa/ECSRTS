@@ -3,8 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using Entitas;
 
-[Input]
-public class InteractibleClickComponent : IComponent
-{
-    public int entityId;
+public class ResourceSourceComponent : IComponent {
+
 }

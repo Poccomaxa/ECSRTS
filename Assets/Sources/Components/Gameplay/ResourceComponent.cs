@@ -1,16 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Entitas;
 
-public class ResourceComponent : MonoBehaviour {
+public enum GameResource
+{
+    GOLD
+}
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+public class ResourceComponent : IComponent {
+    public GameResource resource;
 }
