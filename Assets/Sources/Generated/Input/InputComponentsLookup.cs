@@ -18,9 +18,10 @@ public static class InputComponentsLookup {
     public const int InputSelectionFrame = 7;
     public const int InputSelectionFrameEnd = 8;
     public const int InputSelectionFrameStart = 9;
-    public const int TerrainClick = 10;
+    public const int InteractibleClick = 10;
+    public const int TerrainClick = 11;
 
-    public const int TotalComponents = 11;
+    public const int TotalComponents = 12;
 
     public static readonly string[] componentNames = {
         "Destroyed",
@@ -33,6 +34,7 @@ public static class InputComponentsLookup {
         "InputSelectionFrame",
         "InputSelectionFrameEnd",
         "InputSelectionFrameStart",
+        "InteractibleClick",
         "TerrainClick"
     };
 
@@ -47,6 +49,7 @@ public static class InputComponentsLookup {
         typeof(InputSelectionFrame),
         typeof(InputSelectionFrameEnd),
         typeof(InputSelectionFrameStart),
+        typeof(InteractibleClickComponent),
         typeof(TerrainClickComponent)
     };
 }

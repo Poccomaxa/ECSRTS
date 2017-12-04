@@ -18,7 +18,7 @@ public class NavigationSystem : IExecuteSystem {
             NavMeshAgent agent = entity.view.gameObject.GetComponent<NavMeshAgent>();
 
             bool shouldStop = false;
-            if (agent.remainingDistance < 0.1 && entity.hasNavigationTarget)
+            if (agent.hasPath && agent.remainingDistance < 0.1 && entity.hasNavigationTarget)
             {
                 shouldStop = true;
             }

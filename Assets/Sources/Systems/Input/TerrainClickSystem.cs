@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using Entitas;
+using Entitas.Unity;
 using System;
 
 public class TerrainClickSystem : ReactiveSystem<InputEntity>, ICleanupSystem {
@@ -19,7 +20,14 @@ public class TerrainClickSystem : ReactiveSystem<InputEntity>, ICleanupSystem {
         {
             Ray pointRay = Camera.main.ScreenPointToRay(pointerPosition.inputPointerPosition.position);
             RaycastHit hit;
-            if (Physics.Raycast(pointRay, out hit, float.PositiveInfinity, LayerMask.GetMask("Terrain")))
+            if (Physics.Raycast(pointRay, out hit, float.PositiveInfinity, LayerMask.GetMask("Interactable")))
+            {
+                EntityLink entityLink = hit.collider.gameObject.GetEntityLink();
+                if (entityLink != null)
+                {                    
+                    inputContext.CreateEntity().AddInteractibleClick((entityLink.entity as IId).id.value);
+                }
+            } else if (Physics.Raycast(pointRay, out hit, float.PositiveInfinity, LayerMask.GetMask("Terrain")))
             {
                 inputContext.CreateEntity().AddTerrainClick(hit.point, hit.normal);
             }            

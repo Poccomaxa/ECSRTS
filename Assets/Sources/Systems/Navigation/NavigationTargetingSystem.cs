@@ -5,37 +5,30 @@ using UnityEngine.AI;
 using Entitas;
 using System;
 
-public class NavigationTargetingSystem : ReactiveSystem<InputEntity> {
-    GameContext gameContext;
-    IGroup<GameEntity> navigationGroup;
-    public NavigationTargetingSystem(Contexts contexts) : base(contexts.input) {
-        gameContext = contexts.game;
-        navigationGroup = gameContext.GetGroup(GameMatcher.NavigationAgent);
-    }
+public class NavigationTargetingSystem : ReactiveSystem<GameEntity>
+{
+    public NavigationTargetingSystem(Contexts contexts) : base(contexts.game) { }
 
-    protected override void Execute(List<InputEntity> entities) {
-        foreach (var entity in entities) {
-            foreach (var navEntity in navigationGroup.GetEntities()) {
-                if (navEntity.isSelected)
-                {
-                    navEntity.ReplaceNavigationTarget(entity.terrainClick.position);
-                    navEntity.ReplaceNavigationApproach(float.PositiveInfinity, 0);
-                    NavMeshAgent navAgent = navEntity.view.gameObject.GetComponent<NavMeshAgent>();
-                    if (navAgent != null)
-                    {
-                        navAgent.destination = entity.terrainClick.position;
-                        navAgent.isStopped = false;
-                    }
-                }
+    protected override void Execute(List<GameEntity> entities)
+    {
+        foreach (var entity in entities)
+        {
+            NavMeshAgent navAgent = entity.view.gameObject.GetComponent<NavMeshAgent>();
+            if (navAgent != null)
+            {
+                navAgent.destination = entity.navigationTarget.target;
+                navAgent.isStopped = false;
             }
         }
     }
 
-    protected override bool Filter(InputEntity entity) {
-        return entity.hasTerrainClick;
+    protected override bool Filter(GameEntity entity)
+    {
+        return entity.hasView && entity.isNavigationAgent && entity.hasNavigationTarget;
     }
 
-    protected override ICollector<InputEntity> GetTrigger(IContext<InputEntity> context) {
-        return context.CreateCollector(InputMatcher.TerrainClick.Added());
+    protected override ICollector<GameEntity> GetTrigger(IContext<GameEntity> context)
+    {
+        return context.CreateCollector(GameMatcher.NavigationTarget.Added());
     }
 }

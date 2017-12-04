@@ -22,6 +22,7 @@ public class GameController : MonoBehaviour {
             .Add(new FollowTerrainSystem(context))
             .Add(new ViewSetupSystem(context))
             .Add(new NavigationSetupSystem(context))
+            .Add(new NavigationTerrainClickSystem(context))
             .Add(new NavigationTargetingSystem(context))
             .Add(new NavigationSystem(context))
             .Add(new PositionSystem(context))

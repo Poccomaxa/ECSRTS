@@ -11,6 +11,11 @@ public class NavigationSetupSystem : ReactiveSystem<GameEntity> {
 
     protected override void Execute(List<GameEntity> entities) {
         foreach (var entity in entities) {
+            if (entity.hasPosition)
+            {
+                entity.view.gameObject.transform.position = entity.position.position;
+            }
+
             NavMeshAgent agent = entity.view.gameObject.GetComponent<NavMeshAgent>();
             if (agent == null)
             {
