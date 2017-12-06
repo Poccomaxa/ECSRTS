@@ -18,6 +18,7 @@ public class NavigationResourceMineSystem : ReactiveSystem<GameEntity>
         {
             entity.isNavigationAgentEnabled = false;
             entity.isNavigationObstacleEnabled = true;
+            entity.isResourceMining = true;
         }
     }
 
