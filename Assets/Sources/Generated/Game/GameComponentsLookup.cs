@@ -35,14 +35,15 @@ public static class GameComponentsLookup {
     public const int ResourceMining = 24;
     public const int ResourceQuantity = 25;
     public const int ResourceSource = 26;
-    public const int Rotation = 27;
-    public const int Selectable = 28;
-    public const int Selected = 29;
-    public const int TransferResourceAction = 30;
-    public const int UnitSelection = 31;
-    public const int View = 32;
+    public const int ResoureceLimit = 27;
+    public const int Rotation = 28;
+    public const int Selectable = 29;
+    public const int Selected = 30;
+    public const int TransferResourceAction = 31;
+    public const int UnitSelection = 32;
+    public const int View = 33;
 
-    public const int TotalComponents = 33;
+    public const int TotalComponents = 34;
 
     public static readonly string[] componentNames = {
         "Act",
@@ -72,6 +73,7 @@ public static class GameComponentsLookup {
         "ResourceMining",
         "ResourceQuantity",
         "ResourceSource",
+        "ResoureceLimit",
         "Rotation",
         "Selectable",
         "Selected",
@@ -108,6 +110,7 @@ public static class GameComponentsLookup {
         typeof(ResourceMiningComponent),
         typeof(ResourceQuantity),
         typeof(ResourceSourceComponent),
+        typeof(ResoureceLimitComponent),
         typeof(RotationComponent),
         typeof(SelectableComponent),
         typeof(SelectedComponent),

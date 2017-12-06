@@ -11,17 +11,17 @@ public partial class GameEntity {
     public CountownEndedComponent countownEnded { get { return (CountownEndedComponent)GetComponent(GameComponentsLookup.CountownEnded); } }
     public bool hasCountownEnded { get { return HasComponent(GameComponentsLookup.CountownEnded); } }
 
-    public void AddCountownEnded(float newExtraTime) {
+    public void AddCountownEnded(float newOverflowTime) {
         var index = GameComponentsLookup.CountownEnded;
         var component = CreateComponent<CountownEndedComponent>(index);
-        component.overflowTime = newExtraTime;
+        component.overflowTime = newOverflowTime;
         AddComponent(index, component);
     }
 
-    public void ReplaceCountownEnded(float newExtraTime) {
+    public void ReplaceCountownEnded(float newOverflowTime) {
         var index = GameComponentsLookup.CountownEnded;
         var component = CreateComponent<CountownEndedComponent>(index);
-        component.overflowTime = newExtraTime;
+        component.overflowTime = newOverflowTime;
         ReplaceComponent(index, component);
     }
 

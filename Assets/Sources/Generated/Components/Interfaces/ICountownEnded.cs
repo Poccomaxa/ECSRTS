@@ -11,7 +11,7 @@ public interface ICountownEnded {
     CountownEndedComponent countownEnded { get; }
     bool hasCountownEnded { get; }
 
-    void AddCountownEnded(float newExtraTime);
-    void ReplaceCountownEnded(float newExtraTime);
+    void AddCountownEnded(float newOverflowTime);
+    void ReplaceCountownEnded(float newOverflowTime);
     void RemoveCountownEnded();
 }

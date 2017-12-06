@@ -37,6 +37,7 @@ public class GameController : MonoBehaviour {
 
             .Add(new MiningSystem(context))
             .Add(new ChannelActionSystem(context))
+            .Add(new TransferResourcesSystem(context))
 
             .Add(new PositionSystem(context))
             .Add(new RotationSystem(context))
