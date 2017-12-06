@@ -23,7 +23,7 @@ public class NavigationResourceMineSystem : ReactiveSystem<GameEntity>
 
     protected override bool Filter(GameEntity entity)
     {
-        if (entity.hasNavigationApproach && (entity.isNavigationReached || entity.isNavigationRecede) && entity.hasNavigationObjectTarget)
+        if (entity.hasNavigationApproach && (entity.isNavigationReached || entity.isNavigationRecede) && entity.hasNavigationObjectTarget && entity.hasNavigationAgentRadius)
         {
             GameEntity navigationTarget = gameContext.GetEntityWithId(entity.navigationObjectTarget.entityId);
             if (navigationTarget != null && navigationTarget.isResourceSource && navigationTarget.hasView)
@@ -32,9 +32,7 @@ public class NavigationResourceMineSystem : ReactiveSystem<GameEntity>
                 foreach (var collider in colliders)
                 {
                     Vector3 closest = collider.ClosestPoint(entity.position.position);
-                    Vector3 distance = closest - entity.position.position;
-                    Debug.Log(distance.sqrMagnitude);
-                    if ((closest - entity.position.position).sqrMagnitude < 0.09)
+                    if ((closest - entity.position.position).sqrMagnitude < entity.navigationAgentRadius.radius + 0.09)
                     {
                         return true;
                     }

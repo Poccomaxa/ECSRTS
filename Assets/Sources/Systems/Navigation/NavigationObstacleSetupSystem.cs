@@ -23,6 +23,7 @@ public class NavigationObstacleSetupSystem : ReactiveSystem<GameEntity>
             }
             obstacle.enabled = true;
             obstacle.carving = true;
+            obstacle.shape = NavMeshObstacleShape.Capsule;
         }
     }
 
