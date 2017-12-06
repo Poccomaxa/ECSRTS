@@ -8,18 +8,18 @@
 //------------------------------------------------------------------------------
 public partial class GameEntity {
 
-    static readonly NavigationPrevDistanceComponent navigationPrevDistanceComponent = new NavigationPrevDistanceComponent();
+    static readonly NavigationReachedComponent navigationReachedComponent = new NavigationReachedComponent();
 
-    public bool isNavigationPrevDistance {
-        get { return HasComponent(GameComponentsLookup.NavigationPrevDistance); }
+    public bool isNavigationReached {
+        get { return HasComponent(GameComponentsLookup.NavigationReached); }
         set {
-            if (value != isNavigationPrevDistance) {
-                var index = GameComponentsLookup.NavigationPrevDistance;
+            if (value != isNavigationReached) {
+                var index = GameComponentsLookup.NavigationReached;
                 if (value) {
                     var componentPool = GetComponentPool(index);
                     var component = componentPool.Count > 0
                             ? componentPool.Pop()
-                            : navigationPrevDistanceComponent;
+                            : navigationReachedComponent;
 
                     AddComponent(index, component);
                 } else {
@@ -40,17 +40,17 @@ public partial class GameEntity {
 //------------------------------------------------------------------------------
 public sealed partial class GameMatcher {
 
-    static Entitas.IMatcher<GameEntity> _matcherNavigationPrevDistance;
+    static Entitas.IMatcher<GameEntity> _matcherNavigationReached;
 
-    public static Entitas.IMatcher<GameEntity> NavigationPrevDistance {
+    public static Entitas.IMatcher<GameEntity> NavigationReached {
         get {
-            if (_matcherNavigationPrevDistance == null) {
-                var matcher = (Entitas.Matcher<GameEntity>)Entitas.Matcher<GameEntity>.AllOf(GameComponentsLookup.NavigationPrevDistance);
+            if (_matcherNavigationReached == null) {
+                var matcher = (Entitas.Matcher<GameEntity>)Entitas.Matcher<GameEntity>.AllOf(GameComponentsLookup.NavigationReached);
                 matcher.componentNames = GameComponentsLookup.componentNames;
-                _matcherNavigationPrevDistance = matcher;
+                _matcherNavigationReached = matcher;
             }
 
-            return _matcherNavigationPrevDistance;
+            return _matcherNavigationReached;
         }
     }
 }

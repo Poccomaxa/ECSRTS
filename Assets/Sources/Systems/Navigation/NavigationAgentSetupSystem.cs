@@ -5,8 +5,8 @@ using UnityEngine.AI;
 using Entitas;
 using System;
 
-public class NavigationSetupSystem : ReactiveSystem<GameEntity> {
-    public NavigationSetupSystem(Contexts contexts) : base(contexts.game){
+public class NavigationAgentSetupSystem : ReactiveSystem<GameEntity> {
+    public NavigationAgentSetupSystem(Contexts contexts) : base(contexts.game){
     }
 
     protected override void Execute(List<GameEntity> entities) {
@@ -21,12 +21,12 @@ public class NavigationSetupSystem : ReactiveSystem<GameEntity> {
             {
                 agent = entity.view.gameObject.AddComponent<NavMeshAgent>();
             }
+            entity.ReplaceNavigationAgentRadius(0.75f);
             agent.enabled = true;
             agent.updatePosition = false;
             agent.acceleration = 20;
             agent.speed = 10;
             agent.angularSpeed = 360;
-            agent.radius = 0.75f;
         }
     }
 

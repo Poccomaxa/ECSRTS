@@ -9,3 +9,9 @@ using Entitas.CodeGeneration.Attributes;
 public class NavigationAgentComponent : IComponent
 {
 }
+
+[Game]
+public class NavigationAgentRadiusComponent : IComponent
+{
+    public float radius;
+}

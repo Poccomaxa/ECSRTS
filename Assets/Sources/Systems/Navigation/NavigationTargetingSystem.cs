@@ -19,12 +19,14 @@ public class NavigationTargetingSystem : ReactiveSystem<GameEntity>
                 navAgent.destination = entity.navigationTarget.target;
                 navAgent.isStopped = false;
             }
+            entity.isNavigationAgent = true;
+            entity.isNavigationObstacle = false;
         }
     }
 
     protected override bool Filter(GameEntity entity)
     {
-        return entity.hasView && entity.isNavigationAgent && entity.hasNavigationTarget;
+        return entity.hasView && entity.hasNavigationTarget;
     }
 
     protected override ICollector<GameEntity> GetTrigger(IContext<GameEntity> context)

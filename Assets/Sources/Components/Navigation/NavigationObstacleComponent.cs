@@ -3,6 +3,4 @@ using System.Collections.Generic;
 using UnityEngine;
 using Entitas;
 
-public class NavigationObstacleComponent : IComponent {
-
-}
+public class NavigationObstacleComponent : IComponent { }

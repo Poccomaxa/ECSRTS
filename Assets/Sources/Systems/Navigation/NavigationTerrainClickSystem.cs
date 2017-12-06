@@ -19,7 +19,8 @@ public class NavigationTerrainClickSystem : ReactiveSystem<InputEntity> {
                 if (navEntity.isSelected)
                 {
                     navEntity.ReplaceNavigationTarget(entity.terrainClick.position);
-                    navEntity.ReplaceNavigationApproach(float.PositiveInfinity, 0);                    
+                    navEntity.ReplaceNavigationApproach(float.PositiveInfinity, 0);
+                    navEntity.RemoveNavigationObjectTarget();                   
                 }
             }
         }

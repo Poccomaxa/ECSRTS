@@ -26,9 +26,9 @@ public class NavigationToObjectSystem : ReactiveSystem<InputEntity>
                 {
                     if (navEntity.isSelected)
                     {
-
                         navEntity.ReplaceNavigationTarget(interactable.position.position);
                         navEntity.ReplaceNavigationApproach(float.PositiveInfinity, 0);
+                        navEntity.ReplaceNavigationObjectTarget(entity.interactableClick.entityId);
                     }
                 }
             }

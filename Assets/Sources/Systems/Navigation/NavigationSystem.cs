@@ -19,17 +19,17 @@ public class NavigationSystem : IExecuteSystem
         {
             NavMeshAgent agent = entity.view.gameObject.GetComponent<NavMeshAgent>();
 
-            bool shouldStop = false;
-            if (agent.hasPath && agent.remainingDistance < 0.1 && entity.hasNavigationTarget)
+            if (entity.hasNavigationTarget && !agent.pathPending && agent.remainingDistance <= agent.stoppingDistance
+                    && (!agent.hasPath || agent.velocity.sqrMagnitude == 0f))
             {
-                shouldStop = true;
+                entity.isNavigationReached = true;
             }
 
             if (entity.hasNavigationApproach)
             {
                 if (entity.navigationApproach.timeInPath > 0.75f && entity.navigationApproach.remainingDistance < agent.remainingDistance)
                 {
-                    shouldStop = true;
+                    entity.isNavigationRecede = true;
                 }
             }
 
@@ -39,18 +39,6 @@ public class NavigationSystem : IExecuteSystem
                 float timeInPath = entity.hasNavigationApproach ? entity.navigationApproach.timeInPath : 0;
                 timeInPath += Time.deltaTime;
                 entity.ReplaceNavigationApproach(agent.remainingDistance, timeInPath);
-            }
-
-            if (shouldStop)
-            {
-                agent.isStopped = true;
-                entity.RemoveNavigationTarget();
-                entity.RemoveNavigationApproach();
-            }
-
-            if (!agent.pathPending && agent.remainingDistance <= agent.stoppingDistance && !agent.hasPath || agent.velocity.sqrMagnitude == 0f)
-            {
-                //Debug.Log("I'm here!");
             }
         }
     }
