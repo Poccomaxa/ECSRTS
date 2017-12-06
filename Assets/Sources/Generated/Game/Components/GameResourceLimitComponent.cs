@@ -8,25 +8,25 @@
 //------------------------------------------------------------------------------
 public partial class GameEntity {
 
-    public ResoureceLimitComponent resoureceLimit { get { return (ResoureceLimitComponent)GetComponent(GameComponentsLookup.ResoureceLimit); } }
-    public bool hasResoureceLimit { get { return HasComponent(GameComponentsLookup.ResoureceLimit); } }
+    public ResourceLimitComponent resourceLimit { get { return (ResourceLimitComponent)GetComponent(GameComponentsLookup.ResourceLimit); } }
+    public bool hasResourceLimit { get { return HasComponent(GameComponentsLookup.ResourceLimit); } }
 
-    public void AddResoureceLimit(int newLimit) {
-        var index = GameComponentsLookup.ResoureceLimit;
-        var component = CreateComponent<ResoureceLimitComponent>(index);
+    public void AddResourceLimit(int newLimit) {
+        var index = GameComponentsLookup.ResourceLimit;
+        var component = CreateComponent<ResourceLimitComponent>(index);
         component.limit = newLimit;
         AddComponent(index, component);
     }
 
-    public void ReplaceResoureceLimit(int newLimit) {
-        var index = GameComponentsLookup.ResoureceLimit;
-        var component = CreateComponent<ResoureceLimitComponent>(index);
+    public void ReplaceResourceLimit(int newLimit) {
+        var index = GameComponentsLookup.ResourceLimit;
+        var component = CreateComponent<ResourceLimitComponent>(index);
         component.limit = newLimit;
         ReplaceComponent(index, component);
     }
 
-    public void RemoveResoureceLimit() {
-        RemoveComponent(GameComponentsLookup.ResoureceLimit);
+    public void RemoveResourceLimit() {
+        RemoveComponent(GameComponentsLookup.ResourceLimit);
     }
 }
 
@@ -40,17 +40,17 @@ public partial class GameEntity {
 //------------------------------------------------------------------------------
 public sealed partial class GameMatcher {
 
-    static Entitas.IMatcher<GameEntity> _matcherResoureceLimit;
+    static Entitas.IMatcher<GameEntity> _matcherResourceLimit;
 
-    public static Entitas.IMatcher<GameEntity> ResoureceLimit {
+    public static Entitas.IMatcher<GameEntity> ResourceLimit {
         get {
-            if (_matcherResoureceLimit == null) {
-                var matcher = (Entitas.Matcher<GameEntity>)Entitas.Matcher<GameEntity>.AllOf(GameComponentsLookup.ResoureceLimit);
+            if (_matcherResourceLimit == null) {
+                var matcher = (Entitas.Matcher<GameEntity>)Entitas.Matcher<GameEntity>.AllOf(GameComponentsLookup.ResourceLimit);
                 matcher.componentNames = GameComponentsLookup.componentNames;
-                _matcherResoureceLimit = matcher;
+                _matcherResourceLimit = matcher;
             }
 
-            return _matcherResoureceLimit;
+            return _matcherResourceLimit;
         }
     }
 }

@@ -30,6 +30,7 @@ public class StartGameSystem : IInitializeSystem
                 Vector3 newPoint = hit.point + new Vector3(UnityEngine.Random.Range(-0.1f, 0.1f), 0, UnityEngine.Random.Range(-0.1f, 0.1f));
                 entity.AddNavigationTarget(newPoint);
                 entity.AddPosition(newPoint);
+                entity.AddResourceLimit(5);
             }
         }
     }

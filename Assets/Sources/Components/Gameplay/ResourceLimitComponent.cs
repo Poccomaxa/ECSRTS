@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Entitas;
 
-public class ResoureceLimitComponent : IComponent
+public class ResourceLimitComponent : IComponent
 {
     public int limit;
 }

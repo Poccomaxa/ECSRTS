@@ -32,18 +32,20 @@ public static class GameComponentsLookup {
     public const int ParentLink = 21;
     public const int Position = 22;
     public const int Resource = 23;
-    public const int ResourceMining = 24;
-    public const int ResourceQuantity = 25;
-    public const int ResourceSource = 26;
-    public const int ResoureceLimit = 27;
-    public const int Rotation = 28;
-    public const int Selectable = 29;
-    public const int Selected = 30;
-    public const int TransferResourceAction = 31;
-    public const int UnitSelection = 32;
-    public const int View = 33;
+    public const int ResourceDepot = 24;
+    public const int ResourceFull = 25;
+    public const int ResourceLimit = 26;
+    public const int ResourceMining = 27;
+    public const int ResourceQuantity = 28;
+    public const int ResourceSource = 29;
+    public const int Rotation = 30;
+    public const int Selectable = 31;
+    public const int Selected = 32;
+    public const int TransferResourceAction = 33;
+    public const int UnitSelection = 34;
+    public const int View = 35;
 
-    public const int TotalComponents = 34;
+    public const int TotalComponents = 36;
 
     public static readonly string[] componentNames = {
         "Act",
@@ -70,10 +72,12 @@ public static class GameComponentsLookup {
         "ParentLink",
         "Position",
         "Resource",
+        "ResourceDepot",
+        "ResourceFull",
+        "ResourceLimit",
         "ResourceMining",
         "ResourceQuantity",
         "ResourceSource",
-        "ResoureceLimit",
         "Rotation",
         "Selectable",
         "Selected",
@@ -107,10 +111,12 @@ public static class GameComponentsLookup {
         typeof(ParentLinkComponent),
         typeof(PositionComponent),
         typeof(ResourceComponent),
+        typeof(ResourceDepotComponent),
+        typeof(ResourceFullComponent),
+        typeof(ResourceLimitComponent),
         typeof(ResourceMiningComponent),
         typeof(ResourceQuantity),
         typeof(ResourceSourceComponent),
-        typeof(ResoureceLimitComponent),
         typeof(RotationComponent),
         typeof(SelectableComponent),
         typeof(SelectedComponent),
