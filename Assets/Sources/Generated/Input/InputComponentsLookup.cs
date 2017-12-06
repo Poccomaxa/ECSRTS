@@ -8,22 +8,26 @@
 //------------------------------------------------------------------------------
 public static class InputComponentsLookup {
 
-    public const int Destroyed = 0;
-    public const int Id = 1;
-    public const int InputActionActive = 2;
-    public const int InputAction = 3;
-    public const int InputActionEnded = 4;
-    public const int InputActionStarted = 5;
-    public const int InputPointerPosition = 6;
-    public const int InputSelectionFrame = 7;
-    public const int InputSelectionFrameEnd = 8;
-    public const int InputSelectionFrameStart = 9;
-    public const int InteractableClick = 10;
-    public const int TerrainClick = 11;
+    public const int Countdown = 0;
+    public const int CountownEnded = 1;
+    public const int Destroyed = 2;
+    public const int Id = 3;
+    public const int InputActionActive = 4;
+    public const int InputAction = 5;
+    public const int InputActionEnded = 6;
+    public const int InputActionStarted = 7;
+    public const int InputPointerPosition = 8;
+    public const int InputSelectionFrame = 9;
+    public const int InputSelectionFrameEnd = 10;
+    public const int InputSelectionFrameStart = 11;
+    public const int InteractableClick = 12;
+    public const int TerrainClick = 13;
 
-    public const int TotalComponents = 12;
+    public const int TotalComponents = 14;
 
     public static readonly string[] componentNames = {
+        "Countdown",
+        "CountownEnded",
         "Destroyed",
         "Id",
         "InputActionActive",
@@ -39,6 +43,8 @@ public static class InputComponentsLookup {
     };
 
     public static readonly System.Type[] componentTypes = {
+        typeof(CountdownComponent),
+        typeof(CountownEndedComponent),
         typeof(DestroyedComponent),
         typeof(IdComponent),
         typeof(InputActionActiveComponent),

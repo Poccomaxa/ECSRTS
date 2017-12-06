@@ -4,9 +4,9 @@ using UnityEngine;
 using Entitas;
 using System;
 
-public class StopMiningSystem : ReactiveSystem<GameEntity>
+public class InterruptMiningSystem : ReactiveSystem<GameEntity>
 {
-    public StopMiningSystem(Contexts contexts) : base(contexts.game)
+    public InterruptMiningSystem(Contexts contexts) : base(contexts.game)
     {
 
     }

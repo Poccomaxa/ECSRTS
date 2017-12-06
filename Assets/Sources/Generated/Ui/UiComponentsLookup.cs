@@ -9,17 +9,21 @@
 public static class UiComponentsLookup {
 
     public const int Asset = 0;
-    public const int DestroyCountdown = 1;
-    public const int Destroyed = 2;
-    public const int Id = 3;
-    public const int Rect = 4;
-    public const int SelectionUi = 5;
-    public const int View = 6;
+    public const int Countdown = 1;
+    public const int CountownEnded = 2;
+    public const int DestroyCountdown = 3;
+    public const int Destroyed = 4;
+    public const int Id = 5;
+    public const int Rect = 6;
+    public const int SelectionUi = 7;
+    public const int View = 8;
 
-    public const int TotalComponents = 7;
+    public const int TotalComponents = 9;
 
     public static readonly string[] componentNames = {
         "Asset",
+        "Countdown",
+        "CountownEnded",
         "DestroyCountdown",
         "Destroyed",
         "Id",
@@ -30,6 +34,8 @@ public static class UiComponentsLookup {
 
     public static readonly System.Type[] componentTypes = {
         typeof(AssetComponent),
+        typeof(CountdownComponent),
+        typeof(CountownEndedComponent),
         typeof(DestroyCountdownComponent),
         typeof(DestroyedComponent),
         typeof(IdComponent),

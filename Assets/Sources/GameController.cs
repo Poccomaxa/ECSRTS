@@ -11,6 +11,7 @@ public class GameController : MonoBehaviour {
         systems = new Feature("Systems")            
             .Add(new StartGameSystem(context))
             .Add(new InputSystem(context))
+            .Add(new CountdownSystem(context))
             .Add(new TerrainClickSystem(context))
             .Add(new TerrainClickHighlightSystem(context))
             .Add(new SelectedHighlightSystem(context))
@@ -32,7 +33,11 @@ public class GameController : MonoBehaviour {
             .Add(new NavigationSystem(context))
             .Add(new NavigationResourceMineSystem(context))
             .Add(new NavigationStoppingSystem(context))
-            .Add(new StopMiningSystem(context))
+            .Add(new InterruptMiningSystem(context))
+
+            .Add(new MiningSystem(context))
+            .Add(new ChannelActionSystem(context))
+
             .Add(new PositionSystem(context))
             .Add(new RotationSystem(context))
             .Add(new RectSystem(context))

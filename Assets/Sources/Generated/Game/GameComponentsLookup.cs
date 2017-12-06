@@ -8,38 +8,49 @@
 //------------------------------------------------------------------------------
 public static class GameComponentsLookup {
 
-    public const int Asset = 0;
-    public const int DestroyCountdown = 1;
-    public const int Destroyed = 2;
-    public const int FollowTerrain = 3;
-    public const int Id = 4;
-    public const int NavigationAgent = 5;
-    public const int NavigationAgentEnabled = 6;
-    public const int NavigationAgentRadius = 7;
-    public const int NavigationApproach = 8;
-    public const int NavigationDebug = 9;
-    public const int NavigationObjectTarget = 10;
-    public const int NavigationObstacle = 11;
-    public const int NavigationObstacleEnabled = 12;
-    public const int NavigationReached = 13;
-    public const int NavigationRecede = 14;
-    public const int NavigationTarget = 15;
-    public const int ParentLink = 16;
-    public const int Position = 17;
-    public const int Resource = 18;
-    public const int ResourceMining = 19;
-    public const int ResourceQuantity = 20;
-    public const int ResourceSource = 21;
-    public const int Rotation = 22;
-    public const int Selectable = 23;
-    public const int Selected = 24;
-    public const int UnitSelection = 25;
-    public const int View = 26;
+    public const int Act = 0;
+    public const int Action = 1;
+    public const int Asset = 2;
+    public const int ChannelAction = 3;
+    public const int Countdown = 4;
+    public const int CountownEnded = 5;
+    public const int DestroyCountdown = 6;
+    public const int Destroyed = 7;
+    public const int FollowTerrain = 8;
+    public const int Id = 9;
+    public const int NavigationAgent = 10;
+    public const int NavigationAgentEnabled = 11;
+    public const int NavigationAgentRadius = 12;
+    public const int NavigationApproach = 13;
+    public const int NavigationDebug = 14;
+    public const int NavigationObjectTarget = 15;
+    public const int NavigationObstacle = 16;
+    public const int NavigationObstacleEnabled = 17;
+    public const int NavigationReached = 18;
+    public const int NavigationRecede = 19;
+    public const int NavigationTarget = 20;
+    public const int ParentLink = 21;
+    public const int Position = 22;
+    public const int Resource = 23;
+    public const int ResourceMining = 24;
+    public const int ResourceQuantity = 25;
+    public const int ResourceSource = 26;
+    public const int Rotation = 27;
+    public const int Selectable = 28;
+    public const int Selected = 29;
+    public const int TransferResourceAction = 30;
+    public const int UnitSelection = 31;
+    public const int View = 32;
 
-    public const int TotalComponents = 27;
+    public const int TotalComponents = 33;
 
     public static readonly string[] componentNames = {
+        "Act",
+        "Action",
         "Asset",
+        "ChannelAction",
+        "Countdown",
+        "CountownEnded",
         "DestroyCountdown",
         "Destroyed",
         "FollowTerrain",
@@ -64,12 +75,18 @@ public static class GameComponentsLookup {
         "Rotation",
         "Selectable",
         "Selected",
+        "TransferResourceAction",
         "UnitSelection",
         "View"
     };
 
     public static readonly System.Type[] componentTypes = {
+        typeof(ActComponent),
+        typeof(ActionComponent),
         typeof(AssetComponent),
+        typeof(ChannelActionComponent),
+        typeof(CountdownComponent),
+        typeof(CountownEndedComponent),
         typeof(DestroyCountdownComponent),
         typeof(DestroyedComponent),
         typeof(FollowTerrainComponent),
@@ -94,6 +111,7 @@ public static class GameComponentsLookup {
         typeof(RotationComponent),
         typeof(SelectableComponent),
         typeof(SelectedComponent),
+        typeof(TransferResourceAction),
         typeof(UnitSelectionComponent),
         typeof(ViewComponent)
     };
