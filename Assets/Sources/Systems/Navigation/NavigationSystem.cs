@@ -10,7 +10,7 @@ public class NavigationSystem : IExecuteSystem
     IGroup<GameEntity> navAgents;
     public NavigationSystem(Contexts contexts)
     {
-        navAgents = contexts.game.GetGroup(GameMatcher.NavigationAgent);
+        navAgents = contexts.game.GetGroup(GameMatcher.NavigationAgentEnabled);
     }
 
     public void Execute()

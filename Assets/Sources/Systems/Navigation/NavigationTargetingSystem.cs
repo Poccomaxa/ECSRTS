@@ -13,14 +13,10 @@ public class NavigationTargetingSystem : ReactiveSystem<GameEntity>
     {
         foreach (var entity in entities)
         {
-            NavMeshAgent navAgent = entity.view.gameObject.GetComponent<NavMeshAgent>();
-            if (navAgent != null)
-            {
-                navAgent.destination = entity.navigationTarget.target;
-                navAgent.isStopped = false;
-            }
-            entity.isNavigationAgent = true;
-            entity.isNavigationObstacle = false;
+            entity.navigationAgent.agent.destination = entity.navigationTarget.target;
+            entity.navigationAgent.agent.isStopped = false;
+            entity.isNavigationAgentEnabled = true;
+            entity.isNavigationObstacleEnabled = false;
         }
     }
 

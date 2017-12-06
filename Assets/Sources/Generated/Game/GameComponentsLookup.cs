@@ -14,26 +14,28 @@ public static class GameComponentsLookup {
     public const int FollowTerrain = 3;
     public const int Id = 4;
     public const int NavigationAgent = 5;
-    public const int NavigationAgentRadius = 6;
-    public const int NavigationApproach = 7;
-    public const int NavigationDebug = 8;
-    public const int NavigationObjectTarget = 9;
-    public const int NavigationObstacle = 10;
-    public const int NavigationReached = 11;
-    public const int NavigationRecede = 12;
-    public const int NavigationTarget = 13;
-    public const int ParentLink = 14;
-    public const int Position = 15;
-    public const int Resource = 16;
-    public const int ResourceQuantity = 17;
-    public const int ResourceSource = 18;
-    public const int Rotation = 19;
-    public const int Selectable = 20;
-    public const int Selected = 21;
-    public const int UnitSelection = 22;
-    public const int View = 23;
+    public const int NavigationAgentEnabled = 6;
+    public const int NavigationAgentRadius = 7;
+    public const int NavigationApproach = 8;
+    public const int NavigationDebug = 9;
+    public const int NavigationObjectTarget = 10;
+    public const int NavigationObstacle = 11;
+    public const int NavigationObstacleEnabled = 12;
+    public const int NavigationReached = 13;
+    public const int NavigationRecede = 14;
+    public const int NavigationTarget = 15;
+    public const int ParentLink = 16;
+    public const int Position = 17;
+    public const int Resource = 18;
+    public const int ResourceQuantity = 19;
+    public const int ResourceSource = 20;
+    public const int Rotation = 21;
+    public const int Selectable = 22;
+    public const int Selected = 23;
+    public const int UnitSelection = 24;
+    public const int View = 25;
 
-    public const int TotalComponents = 24;
+    public const int TotalComponents = 26;
 
     public static readonly string[] componentNames = {
         "Asset",
@@ -42,11 +44,13 @@ public static class GameComponentsLookup {
         "FollowTerrain",
         "Id",
         "NavigationAgent",
+        "NavigationAgentEnabled",
         "NavigationAgentRadius",
         "NavigationApproach",
         "NavigationDebug",
         "NavigationObjectTarget",
         "NavigationObstacle",
+        "NavigationObstacleEnabled",
         "NavigationReached",
         "NavigationRecede",
         "NavigationTarget",
@@ -69,11 +73,13 @@ public static class GameComponentsLookup {
         typeof(FollowTerrainComponent),
         typeof(IdComponent),
         typeof(NavigationAgentComponent),
+        typeof(NavigationAgentEnabledComponent),
         typeof(NavigationAgentRadiusComponent),
         typeof(NavigationApproachComponent),
         typeof(NavigationDebugComponent),
         typeof(NavigationObjectTargetComponent),
         typeof(NavigationObstacleComponent),
+        typeof(NavigationObstacleEnabledComponent),
         typeof(NavigationReachedComponent),
         typeof(NavigationRecedeComponent),
         typeof(NavigationTargetComponent),

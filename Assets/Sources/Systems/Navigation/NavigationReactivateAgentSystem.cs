@@ -4,9 +4,9 @@ using UnityEngine;
 using Entitas;
 using System;
 
-public class NavigationAgentRadiusSetupSystem : ReactiveSystem<GameEntity>
+public class NavigationReactivateAgentSystem : ReactiveSystem<GameEntity>
 {
-    public NavigationAgentRadiusSetupSystem(Contexts contexts) : base(contexts.game)
+    public NavigationReactivateAgentSystem(Contexts contexts) : base(contexts.game)
     {
 
     }
@@ -15,17 +15,18 @@ public class NavigationAgentRadiusSetupSystem : ReactiveSystem<GameEntity>
     {
         foreach (var entity in entities)
         {
-            entity.navigationAgent.agent.radius = entity.navigationAgentRadius.radius;
+            entity.isNavigationAgentEnabled = true;
+            entity.isNavigationObstacleEnabled = false;
         }
     }
 
     protected override bool Filter(GameEntity entity)
     {
-        return entity.hasNavigationAgent && entity.hasNavigationAgentRadius;
+        return !entity.isNavigationAgentEnabled;
     }
 
     protected override ICollector<GameEntity> GetTrigger(IContext<GameEntity> context)
     {
-        return context.CreateCollector(GameMatcher.NavigationAgentRadius.Added());
+        return context.CreateCollector(GameMatcher.NavigationTarget.Added());
     }
 }

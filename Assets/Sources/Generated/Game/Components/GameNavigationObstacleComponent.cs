@@ -8,25 +8,25 @@
 //------------------------------------------------------------------------------
 public partial class GameEntity {
 
-    static readonly NavigationObstacleComponent navigationObstacleComponent = new NavigationObstacleComponent();
+    public NavigationObstacleComponent navigationObstacle { get { return (NavigationObstacleComponent)GetComponent(GameComponentsLookup.NavigationObstacle); } }
+    public bool hasNavigationObstacle { get { return HasComponent(GameComponentsLookup.NavigationObstacle); } }
 
-    public bool isNavigationObstacle {
-        get { return HasComponent(GameComponentsLookup.NavigationObstacle); }
-        set {
-            if (value != isNavigationObstacle) {
-                var index = GameComponentsLookup.NavigationObstacle;
-                if (value) {
-                    var componentPool = GetComponentPool(index);
-                    var component = componentPool.Count > 0
-                            ? componentPool.Pop()
-                            : navigationObstacleComponent;
+    public void AddNavigationObstacle(UnityEngine.AI.NavMeshObstacle newObstacle) {
+        var index = GameComponentsLookup.NavigationObstacle;
+        var component = CreateComponent<NavigationObstacleComponent>(index);
+        component.obstacle = newObstacle;
+        AddComponent(index, component);
+    }
 
-                    AddComponent(index, component);
-                } else {
-                    RemoveComponent(index);
-                }
-            }
-        }
+    public void ReplaceNavigationObstacle(UnityEngine.AI.NavMeshObstacle newObstacle) {
+        var index = GameComponentsLookup.NavigationObstacle;
+        var component = CreateComponent<NavigationObstacleComponent>(index);
+        component.obstacle = newObstacle;
+        ReplaceComponent(index, component);
+    }
+
+    public void RemoveNavigationObstacle() {
+        RemoveComponent(GameComponentsLookup.NavigationObstacle);
     }
 }
 

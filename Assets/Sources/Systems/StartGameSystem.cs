@@ -25,7 +25,8 @@ public class StartGameSystem : IInitializeSystem
                 entity.AddAsset("Prefabs/Unit");
                 entity.isSelectable = true;
 
-                entity.isNavigationAgent = true;
+                entity.ReplaceNavigationAgent(null);
+                entity.ReplaceNavigationObstacle(null);
                 Vector3 newPoint = hit.point + new Vector3(UnityEngine.Random.Range(-0.1f, 0.1f), 0, UnityEngine.Random.Range(-0.1f, 0.1f));
                 entity.AddNavigationTarget(newPoint);
                 entity.AddPosition(newPoint);

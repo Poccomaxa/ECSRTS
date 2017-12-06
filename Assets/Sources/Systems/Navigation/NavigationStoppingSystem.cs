@@ -36,8 +36,7 @@ public class NavigationStoppingSystem : ReactiveSystem<GameEntity>, ICleanupSyst
                     continue;
                 }
             }
-            NavMeshAgent agent = entity.view.gameObject.GetComponent<NavMeshAgent>();
-            agent.isStopped = true;
+            entity.navigationAgent.agent.isStopped = true;
             entity.RemoveNavigationTarget();
             entity.RemoveNavigationApproach();
         }
@@ -45,7 +44,7 @@ public class NavigationStoppingSystem : ReactiveSystem<GameEntity>, ICleanupSyst
 
     protected override bool Filter(GameEntity entity)
     {
-        return entity.hasView && (entity.isNavigationReached || entity.isNavigationRecede) && entity.isNavigationAgent;
+        return entity.hasView && (entity.isNavigationReached || entity.isNavigationRecede) && entity.isNavigationAgentEnabled;
     }
 
     protected override ICollector<GameEntity> GetTrigger(IContext<GameEntity> context)

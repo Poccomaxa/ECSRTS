@@ -16,20 +16,20 @@ public class NavigationObstacleSetupSystem : ReactiveSystem<GameEntity>
     {
         foreach (var entity in entities)
         {
-            NavMeshObstacle obstacle = entity.view.gameObject.GetComponent<NavMeshObstacle>();
-            if (obstacle == null)
+            entity.ReplaceNavigationObstacle(entity.view.gameObject.GetComponent<NavMeshObstacle>());
+            if (entity.navigationObstacle.obstacle == null)
             {
-                obstacle = entity.view.gameObject.AddComponent<NavMeshObstacle>();
+                entity.ReplaceNavigationObstacle(entity.view.gameObject.AddComponent<NavMeshObstacle>());
             }
-            obstacle.enabled = true;
-            obstacle.carving = true;
-            obstacle.shape = NavMeshObstacleShape.Capsule;
+            entity.navigationObstacle.obstacle.enabled = false;
+            entity.navigationObstacle.obstacle.carving = true;
+            entity.navigationObstacle.obstacle.shape = NavMeshObstacleShape.Capsule;
         }
     }
 
     protected override bool Filter(GameEntity entity)
     {
-        return entity.hasView && entity.isNavigationObstacle;
+        return entity.hasView && entity.hasNavigationObstacle;
     }
 
     protected override ICollector<GameEntity> GetTrigger(IContext<GameEntity> context)

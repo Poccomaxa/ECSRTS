@@ -16,8 +16,8 @@ public class NavigationResourceMineSystem : ReactiveSystem<GameEntity>
     {
         foreach (var entity in entities)
         {
-            entity.isNavigationAgent = false;
-            entity.isNavigationObstacle = true;            
+            entity.isNavigationAgentEnabled = false;
+            entity.isNavigationObstacleEnabled = true;
         }
     }
 

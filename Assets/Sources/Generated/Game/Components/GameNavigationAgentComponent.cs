@@ -8,25 +8,25 @@
 //------------------------------------------------------------------------------
 public partial class GameEntity {
 
-    static readonly NavigationAgentComponent navigationAgentComponent = new NavigationAgentComponent();
+    public NavigationAgentComponent navigationAgent { get { return (NavigationAgentComponent)GetComponent(GameComponentsLookup.NavigationAgent); } }
+    public bool hasNavigationAgent { get { return HasComponent(GameComponentsLookup.NavigationAgent); } }
 
-    public bool isNavigationAgent {
-        get { return HasComponent(GameComponentsLookup.NavigationAgent); }
-        set {
-            if (value != isNavigationAgent) {
-                var index = GameComponentsLookup.NavigationAgent;
-                if (value) {
-                    var componentPool = GetComponentPool(index);
-                    var component = componentPool.Count > 0
-                            ? componentPool.Pop()
-                            : navigationAgentComponent;
+    public void AddNavigationAgent(UnityEngine.AI.NavMeshAgent newAgent) {
+        var index = GameComponentsLookup.NavigationAgent;
+        var component = CreateComponent<NavigationAgentComponent>(index);
+        component.agent = newAgent;
+        AddComponent(index, component);
+    }
 
-                    AddComponent(index, component);
-                } else {
-                    RemoveComponent(index);
-                }
-            }
-        }
+    public void ReplaceNavigationAgent(UnityEngine.AI.NavMeshAgent newAgent) {
+        var index = GameComponentsLookup.NavigationAgent;
+        var component = CreateComponent<NavigationAgentComponent>(index);
+        component.agent = newAgent;
+        ReplaceComponent(index, component);
+    }
+
+    public void RemoveNavigationAgent() {
+        RemoveComponent(GameComponentsLookup.NavigationAgent);
     }
 }
 

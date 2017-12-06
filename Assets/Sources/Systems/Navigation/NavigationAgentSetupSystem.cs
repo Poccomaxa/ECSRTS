@@ -16,22 +16,22 @@ public class NavigationAgentSetupSystem : ReactiveSystem<GameEntity> {
                 entity.view.gameObject.transform.position = entity.position.position;
             }
 
-            NavMeshAgent agent = entity.view.gameObject.GetComponent<NavMeshAgent>();
-            if (agent == null)
+            entity.ReplaceNavigationAgent(entity.view.gameObject.GetComponent<NavMeshAgent>());
+            if (entity.navigationAgent.agent == null)
             {
-                agent = entity.view.gameObject.AddComponent<NavMeshAgent>();
+                entity.ReplaceNavigationAgent(entity.view.gameObject.AddComponent<NavMeshAgent>());
             }
             entity.ReplaceNavigationAgentRadius(0.75f);
-            agent.enabled = true;
-            agent.updatePosition = false;
-            agent.acceleration = 20;
-            agent.speed = 10;
-            agent.angularSpeed = 360;
+            entity.navigationAgent.agent.enabled = false;
+            entity.navigationAgent.agent.updatePosition = false;
+            entity.navigationAgent.agent.acceleration = 20;
+            entity.navigationAgent.agent.speed = 10;
+            entity.navigationAgent.agent.angularSpeed = 360;
         }
     }
 
     protected override bool Filter(GameEntity entity) {
-        return entity.hasView && entity.isNavigationAgent && entity.view.gameObject.GetComponent<NavMeshAgent>() == null;
+        return entity.hasView && entity.hasNavigationAgent && entity.view.gameObject.GetComponent<NavMeshAgent>() == null;
     }
 
     protected override ICollector<GameEntity> GetTrigger(IContext<GameEntity> context) {
