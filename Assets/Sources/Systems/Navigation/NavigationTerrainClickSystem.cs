@@ -20,7 +20,10 @@ public class NavigationTerrainClickSystem : ReactiveSystem<InputEntity> {
                 {
                     navEntity.ReplaceNavigationTarget(entity.terrainClick.position);
                     navEntity.ReplaceNavigationApproach(float.PositiveInfinity, 0);
-                    navEntity.RemoveNavigationObjectTarget();                   
+                    if (navEntity.hasNavigationObjectTarget)
+                    {
+                        navEntity.RemoveNavigationObjectTarget();
+                    }                 
                 }
             }
         }
