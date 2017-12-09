@@ -23,29 +23,30 @@ public static class GameComponentsLookup {
     public const int NavigationAgentRadius = 12;
     public const int NavigationApproach = 13;
     public const int NavigationDebug = 14;
-    public const int NavigationObjectTarget = 15;
-    public const int NavigationObstacle = 16;
-    public const int NavigationObstacleEnabled = 17;
-    public const int NavigationReached = 18;
-    public const int NavigationRecede = 19;
-    public const int NavigationTarget = 20;
-    public const int ParentLink = 21;
-    public const int Position = 22;
-    public const int Resource = 23;
-    public const int ResourceDepot = 24;
-    public const int ResourceFull = 25;
-    public const int ResourceLimit = 26;
-    public const int ResourceMining = 27;
-    public const int ResourceQuantity = 28;
-    public const int ResourceSource = 29;
-    public const int Rotation = 30;
-    public const int Selectable = 31;
-    public const int Selected = 32;
-    public const int TransferResourceAction = 33;
-    public const int UnitSelection = 34;
-    public const int View = 35;
+    public const int NavigationObjectReached = 15;
+    public const int NavigationObjectTarget = 16;
+    public const int NavigationObstacle = 17;
+    public const int NavigationObstacleEnabled = 18;
+    public const int NavigationReached = 19;
+    public const int NavigationRecede = 20;
+    public const int NavigationTarget = 21;
+    public const int ParentLink = 22;
+    public const int Position = 23;
+    public const int Resource = 24;
+    public const int ResourceDepot = 25;
+    public const int ResourceFull = 26;
+    public const int ResourceLimit = 27;
+    public const int ResourceMining = 28;
+    public const int ResourceQuantity = 29;
+    public const int ResourceSource = 30;
+    public const int Rotation = 31;
+    public const int Selectable = 32;
+    public const int Selected = 33;
+    public const int TransferResourceAction = 34;
+    public const int UnitSelection = 35;
+    public const int View = 36;
 
-    public const int TotalComponents = 36;
+    public const int TotalComponents = 37;
 
     public static readonly string[] componentNames = {
         "Act",
@@ -63,6 +64,7 @@ public static class GameComponentsLookup {
         "NavigationAgentRadius",
         "NavigationApproach",
         "NavigationDebug",
+        "NavigationObjectReached",
         "NavigationObjectTarget",
         "NavigationObstacle",
         "NavigationObstacleEnabled",
@@ -102,6 +104,7 @@ public static class GameComponentsLookup {
         typeof(NavigationAgentRadiusComponent),
         typeof(NavigationApproachComponent),
         typeof(NavigationDebugComponent),
+        typeof(NavigationObjectReachedComponent),
         typeof(NavigationObjectTargetComponent),
         typeof(NavigationObstacleComponent),
         typeof(NavigationObstacleEnabledComponent),

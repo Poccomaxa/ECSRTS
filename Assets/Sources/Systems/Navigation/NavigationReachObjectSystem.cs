@@ -4,10 +4,10 @@ using UnityEngine;
 using Entitas;
 using System;
 
-public class NavigationResourceMineSystem : ReactiveSystem<GameEntity>
+public class NavigationReachObjectSystem : ReactiveSystem<GameEntity>
 {
     private GameContext gameContext;
-    public NavigationResourceMineSystem(Contexts contexts) : base(contexts.game)
+    public NavigationReachObjectSystem(Contexts contexts) : base(contexts.game)
     {
         gameContext = contexts.game;
     }
@@ -16,9 +16,7 @@ public class NavigationResourceMineSystem : ReactiveSystem<GameEntity>
     {
         foreach (var entity in entities)
         {
-            entity.isNavigationAgentEnabled = false;
-            entity.isNavigationObstacleEnabled = true;
-            entity.isResourceMining = true;
+            entity.isNavigationObjectReached = true;
         }
     }
 
@@ -27,7 +25,7 @@ public class NavigationResourceMineSystem : ReactiveSystem<GameEntity>
         if (entity.hasNavigationApproach && (entity.isNavigationReached || entity.isNavigationRecede) && entity.hasNavigationObjectTarget && entity.hasNavigationAgentRadius)
         {
             GameEntity navigationTarget = gameContext.GetEntityWithId(entity.navigationObjectTarget.entityId);
-            if (navigationTarget != null && navigationTarget.isResourceSource && navigationTarget.hasView)
+            if (navigationTarget != null && navigationTarget.hasView)
             {
                 Collider[] colliders =  navigationTarget.view.gameObject.GetComponents<Collider>();
                 foreach (var collider in colliders)

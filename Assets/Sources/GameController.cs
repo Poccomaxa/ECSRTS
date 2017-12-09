@@ -31,7 +31,7 @@ public class GameController : MonoBehaviour {
             .Add(new NavigationAgentRadiusSetupSystem(context))
             .Add(new NavigationTargetingSystem(context))
             .Add(new NavigationSystem(context))
-            .Add(new NavigationResourceMineSystem(context))
+            .Add(new NavigationReachObjectSystem(context))
             .Add(new NavigationStoppingSystem(context))
             .Add(new InterruptMiningSystem(context))
 
