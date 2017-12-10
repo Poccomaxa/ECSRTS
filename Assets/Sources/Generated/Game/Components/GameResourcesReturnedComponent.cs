@@ -11,17 +11,17 @@ public partial class GameEntity {
     public ResourcesReturnedComponent resourcesReturned { get { return (ResourcesReturnedComponent)GetComponent(GameComponentsLookup.ResourcesReturned); } }
     public bool hasResourcesReturned { get { return HasComponent(GameComponentsLookup.ResourcesReturned); } }
 
-    public void AddResourcesReturned(GameResource newResoureceType) {
+    public void AddResourcesReturned(GameResource newResourceType) {
         var index = GameComponentsLookup.ResourcesReturned;
         var component = CreateComponent<ResourcesReturnedComponent>(index);
-        component.resourceType = newResoureceType;
+        component.resourceType = newResourceType;
         AddComponent(index, component);
     }
 
-    public void ReplaceResourcesReturned(GameResource newResoureceType) {
+    public void ReplaceResourcesReturned(GameResource newResourceType) {
         var index = GameComponentsLookup.ResourcesReturned;
         var component = CreateComponent<ResourcesReturnedComponent>(index);
-        component.resourceType = newResoureceType;
+        component.resourceType = newResourceType;
         ReplaceComponent(index, component);
     }
 

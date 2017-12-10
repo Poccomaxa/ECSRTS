@@ -45,6 +45,9 @@ public class GameController : MonoBehaviour {
             .Add(new TransferResourcesSystem(context))            
             .Add(new ResourceFullDetectSystem(context))
 
+            .Add(new PlayerResourceSystem(context))
+            .Add(new TextSystem(context))
+
             .Add(new PositionSystem(context))
             .Add(new RotationSystem(context))
             .Add(new RectSystem(context))

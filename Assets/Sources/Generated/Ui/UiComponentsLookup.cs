@@ -14,11 +14,14 @@ public static class UiComponentsLookup {
     public const int DestroyCountdown = 3;
     public const int Destroyed = 4;
     public const int Id = 5;
-    public const int Rect = 6;
-    public const int SelectionUi = 7;
-    public const int View = 8;
+    public const int PlayerResource = 6;
+    public const int Rect = 7;
+    public const int SelectionUi = 8;
+    public const int Text = 9;
+    public const int TextView = 10;
+    public const int View = 11;
 
-    public const int TotalComponents = 9;
+    public const int TotalComponents = 12;
 
     public static readonly string[] componentNames = {
         "Asset",
@@ -27,8 +30,11 @@ public static class UiComponentsLookup {
         "DestroyCountdown",
         "Destroyed",
         "Id",
+        "PlayerResource",
         "Rect",
         "SelectionUi",
+        "Text",
+        "TextView",
         "View"
     };
 
@@ -39,8 +45,11 @@ public static class UiComponentsLookup {
         typeof(DestroyCountdownComponent),
         typeof(DestroyedComponent),
         typeof(IdComponent),
+        typeof(PlayerResourceComponent),
         typeof(RectComponent),
         typeof(SelectionUiComponent),
+        typeof(TextComponent),
+        typeof(TextViewComponent),
         typeof(ViewComponent)
     };
 }

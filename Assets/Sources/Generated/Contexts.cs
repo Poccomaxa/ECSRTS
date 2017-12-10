@@ -63,6 +63,7 @@ public partial class Contexts {
     public const string Id = "Id";
     public const string InputAction = "InputAction";
     public const string ParentLink = "ParentLink";
+    public const string PlayerResource = "PlayerResource";
 
     [Entitas.CodeGeneration.Attributes.PostConstructor]
     public void InitializeEntityIndices() {
@@ -88,6 +89,11 @@ public partial class Contexts {
             ParentLink,
             game.GetGroup(GameMatcher.ParentLink),
             (e, c) => ((ParentLinkComponent)c).parentId));
+
+        ui.AddEntityIndex(new Entitas.EntityIndex<UiEntity, GameResource>(
+            PlayerResource,
+            ui.GetGroup(UiMatcher.PlayerResource),
+            (e, c) => ((PlayerResourceComponent)c).resource));
     }
 }
 
@@ -111,6 +117,10 @@ public static class ContextsExtensions {
 
     public static System.Collections.Generic.HashSet<GameEntity> GetEntitiesWithParentLink(this GameContext context, int parentId) {
         return ((Entitas.EntityIndex<GameEntity, int>)context.GetEntityIndex(Contexts.ParentLink)).GetEntities(parentId);
+    }
+
+    public static System.Collections.Generic.HashSet<UiEntity> GetEntitiesWithPlayerResource(this UiContext context, GameResource resource) {
+        return ((Entitas.EntityIndex<UiEntity, GameResource>)context.GetEntityIndex(Contexts.PlayerResource)).GetEntities(resource);
     }
 }
 //------------------------------------------------------------------------------

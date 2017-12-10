@@ -20,5 +20,6 @@ class InventoryInitSystem : IInitializeSystem
         Dictionary<GameResource, int> playerResouces = new Dictionary<GameResource, int>();
         playerResouces.Add(GameResource.GOLD, gold.id.value);
         gameContext.ReplacePlayerInventory(playerResouces);
+        gold.AddParentLink(gameContext.playerInventoryEntity.id.value);
     }
 }
