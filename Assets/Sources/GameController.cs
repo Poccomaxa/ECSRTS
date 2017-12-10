@@ -40,8 +40,10 @@ public class GameController : MonoBehaviour {
             .Add(new InventoryInitSystem(context))
             .Add(new MiningSystem(context))
             .Add(new ChannelActionSystem(context))
-            .Add(new TransferResourcesSystem(context))
             .Add(new ReturnResourcesSystem(context))
+            .Add(new BackToMiningSystem(context))
+            .Add(new TransferResourcesSystem(context))            
+            .Add(new ResourceFullDetectSystem(context))
 
             .Add(new PositionSystem(context))
             .Add(new RotationSystem(context))

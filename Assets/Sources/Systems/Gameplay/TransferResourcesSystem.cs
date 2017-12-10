@@ -25,12 +25,7 @@ public class TransferResourcesSystem : ReactiveSystem<GameEntity>
                 int prevToQuantity = toEntity.hasResourceQuantity ? toEntity.resourceQuantity.quantity : 0;
                 if (toEntity.hasResourceLimit)
                 {
-                    int spaceLeft = toEntity.resourceLimit.limit - prevToQuantity;
-                    if (spaceLeft < amountToTransfer)
-                    {
-                        toEntity.isResourceFull = true;
-                    }
-                    amountToTransfer = Math.Min(spaceLeft, amountToTransfer);
+                    amountToTransfer = Math.Min(toEntity.resourceLimit.limit - prevToQuantity, amountToTransfer);
                 }
 
                 if (amountToTransfer > 0)

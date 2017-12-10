@@ -30,11 +30,7 @@ public class NavigationStoppingSystem : ReactiveSystem<GameEntity>, ICleanupSyst
         {
             if (entity.hasNavigationObjectTarget)
             {
-                GameEntity navigationTarget = gameContext.GetEntityWithId(entity.navigationObjectTarget.entityId);
-                if (navigationTarget != null && navigationTarget.isResourceSource)
-                {
-                    continue;
-                }
+                continue;
             }
             entity.navigationAgent.agent.isStopped = true;
             entity.RemoveNavigationTarget();
