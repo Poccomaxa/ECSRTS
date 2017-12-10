@@ -7,7 +7,8 @@ using Entitas.CodeGeneration.Attributes;
 public enum InputAction
 {
     SELECT,
-    ACT
+    ACT,
+    BUILD_UNIT
 }
 
 [Input]
