@@ -16,5 +16,6 @@ public class DepotSpawner : MonoBehaviour {
         entity.AddPosition(transform.position);
         entity.isResourceDepot = true;
         entity.ReplaceNavigationObstacle(gameObject.GetComponent<NavMeshObstacle>());
+        entity.isNavigationObstacleEnabled = true;
     }
 }

@@ -32,9 +32,12 @@ public class GameController : MonoBehaviour {
             .Add(new NavigationTargetingSystem(context))
             .Add(new NavigationSystem(context))
             .Add(new NavigationReachObjectSystem(context))
+            .Add(new NavigationStartMiningSystem(context))
+            .Add(new NavigationReturnResourcesSystem(context))
             .Add(new NavigationStoppingSystem(context))
             .Add(new InterruptMiningSystem(context))
 
+            .Add(new InventoryInitSystem(context))
             .Add(new MiningSystem(context))
             .Add(new ChannelActionSystem(context))
             .Add(new TransferResourcesSystem(context))

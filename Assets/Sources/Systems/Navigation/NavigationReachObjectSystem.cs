@@ -4,12 +4,22 @@ using UnityEngine;
 using Entitas;
 using System;
 
-public class NavigationReachObjectSystem : ReactiveSystem<GameEntity>
+public class NavigationReachObjectSystem : ReactiveSystem<GameEntity>, ICleanupSystem
 {
+    private IGroup<GameEntity> reachedObject;
     private GameContext gameContext;
     public NavigationReachObjectSystem(Contexts contexts) : base(contexts.game)
     {
         gameContext = contexts.game;
+        reachedObject = gameContext.GetGroup(GameMatcher.NavigationObjectReached);
+    }
+
+    public void Cleanup()
+    {
+        foreach (var entity in reachedObject.GetEntities())
+        {
+            entity.isNavigationObjectReached = false;
+        }
     }
 
     protected override void Execute(List<GameEntity> entities)

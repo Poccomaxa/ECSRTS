@@ -6,9 +6,10 @@ using System;
 
 public class InterruptMiningSystem : ReactiveSystem<GameEntity>
 {
+    private GameContext gameContext;
     public InterruptMiningSystem(Contexts contexts) : base(contexts.game)
     {
-
+        gameContext = contexts.game;
     }
 
     protected override void Execute(List<GameEntity> entities)
@@ -16,6 +17,15 @@ public class InterruptMiningSystem : ReactiveSystem<GameEntity>
         foreach (var entity in entities)
         {
             entity.isResourceMining = false;
+
+            var childEntities = gameContext.GetEntitiesWithParentLink(entity.id.value);
+            foreach (var child in childEntities)
+            {
+                if (child.hasAction)
+                {
+                    child.isDestroyed = true;
+                }
+            }
         }
     }
 

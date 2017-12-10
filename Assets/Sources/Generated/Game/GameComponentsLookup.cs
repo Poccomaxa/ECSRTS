@@ -31,22 +31,23 @@ public static class GameComponentsLookup {
     public const int NavigationRecede = 20;
     public const int NavigationTarget = 21;
     public const int ParentLink = 22;
-    public const int Position = 23;
-    public const int Resource = 24;
-    public const int ResourceDepot = 25;
-    public const int ResourceFull = 26;
-    public const int ResourceLimit = 27;
-    public const int ResourceMining = 28;
-    public const int ResourceQuantity = 29;
-    public const int ResourceSource = 30;
-    public const int Rotation = 31;
-    public const int Selectable = 32;
-    public const int Selected = 33;
-    public const int TransferResourceAction = 34;
-    public const int UnitSelection = 35;
-    public const int View = 36;
+    public const int PlayerInventory = 23;
+    public const int Position = 24;
+    public const int Resource = 25;
+    public const int ResourceDepot = 26;
+    public const int ResourceFull = 27;
+    public const int ResourceLimit = 28;
+    public const int ResourceMining = 29;
+    public const int ResourceQuantity = 30;
+    public const int ResourceSource = 31;
+    public const int Rotation = 32;
+    public const int Selectable = 33;
+    public const int Selected = 34;
+    public const int TransferResourceAction = 35;
+    public const int UnitSelection = 36;
+    public const int View = 37;
 
-    public const int TotalComponents = 37;
+    public const int TotalComponents = 38;
 
     public static readonly string[] componentNames = {
         "Act",
@@ -72,6 +73,7 @@ public static class GameComponentsLookup {
         "NavigationRecede",
         "NavigationTarget",
         "ParentLink",
+        "PlayerInventory",
         "Position",
         "Resource",
         "ResourceDepot",
@@ -112,6 +114,7 @@ public static class GameComponentsLookup {
         typeof(NavigationRecedeComponent),
         typeof(NavigationTargetComponent),
         typeof(ParentLinkComponent),
+        typeof(PlayerInventoryComponent),
         typeof(PositionComponent),
         typeof(ResourceComponent),
         typeof(ResourceDepotComponent),
