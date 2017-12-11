@@ -7,12 +7,10 @@ using System;
 
 public class NavigationStoppingSystem : ReactiveSystem<GameEntity>, ICleanupSystem
 {
-    GameContext gameContext;
     IGroup<GameEntity> stoppingComponents;
     public NavigationStoppingSystem(Contexts contexts) : base(contexts.game)
     {
         stoppingComponents = contexts.game.GetGroup(GameMatcher.AnyOf(GameMatcher.NavigationReached, GameMatcher.NavigationRecede));
-        gameContext = contexts.game;
     }
 
     public void Cleanup()

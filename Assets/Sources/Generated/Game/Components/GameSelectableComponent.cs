@@ -8,25 +8,25 @@
 //------------------------------------------------------------------------------
 public partial class GameEntity {
 
-    static readonly SelectableComponent selectableComponent = new SelectableComponent();
+    public SelectableComponent selectable { get { return (SelectableComponent)GetComponent(GameComponentsLookup.Selectable); } }
+    public bool hasSelectable { get { return HasComponent(GameComponentsLookup.Selectable); } }
 
-    public bool isSelectable {
-        get { return HasComponent(GameComponentsLookup.Selectable); }
-        set {
-            if (value != isSelectable) {
-                var index = GameComponentsLookup.Selectable;
-                if (value) {
-                    var componentPool = GetComponentPool(index);
-                    var component = componentPool.Count > 0
-                            ? componentPool.Pop()
-                            : selectableComponent;
+    public void AddSelectable(string newSelectionAsset) {
+        var index = GameComponentsLookup.Selectable;
+        var component = CreateComponent<SelectableComponent>(index);
+        component.selectionAsset = newSelectionAsset;
+        AddComponent(index, component);
+    }
 
-                    AddComponent(index, component);
-                } else {
-                    RemoveComponent(index);
-                }
-            }
-        }
+    public void ReplaceSelectable(string newSelectionAsset) {
+        var index = GameComponentsLookup.Selectable;
+        var component = CreateComponent<SelectableComponent>(index);
+        component.selectionAsset = newSelectionAsset;
+        ReplaceComponent(index, component);
+    }
+
+    public void RemoveSelectable() {
+        RemoveComponent(GameComponentsLookup.Selectable);
     }
 }
 

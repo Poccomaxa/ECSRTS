@@ -63,7 +63,7 @@ public class SelectionSystem : ReactiveSystem<InputEntity>
         InputEntity pointerPosition = pointerGroup.Last();
         Ray mouseRay = Camera.main.ScreenPointToRay(pointerPosition.inputPointerPosition.position);
         RaycastHit hit;
-        if (Physics.Raycast(mouseRay, out hit, float.PositiveInfinity, LayerMask.GetMask("Selectable")))
+        if (Physics.Raycast(mouseRay, out hit, float.PositiveInfinity, LayerMask.GetMask("Selectable", "Interactable")))
         {
             GameEntity linkedEntity = (GameEntity)hit.collider.gameObject.GetEntityLink().entity;
             if (linkedEntity != null)

@@ -17,7 +17,7 @@ public class SelectedHighlightSystem : ReactiveSystem<GameEntity>
         foreach (var entity in entities)
         {
             GameEntity selectionView = gameContext.CreateEntity();
-            selectionView.AddAsset("Prefabs/Selection");
+            selectionView.AddAsset(entity.selectable.selectionAsset);
             selectionView.AddParentLink(entity.id.value);
             selectionView.isFollowTerrain = true;
             selectionView.isUnitSelection = true;
@@ -26,7 +26,7 @@ public class SelectedHighlightSystem : ReactiveSystem<GameEntity>
 
     protected override bool Filter(GameEntity entity)
     {
-        return entity.isSelected;
+        return entity.isSelected && entity.hasSelectable;
     }
 
     protected override ICollector<GameEntity> GetTrigger(IContext<GameEntity> context)

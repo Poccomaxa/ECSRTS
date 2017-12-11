@@ -17,6 +17,6 @@ public class DepotSpawner : MonoBehaviour {
         entity.isResourceDepot = true;
         entity.ReplaceNavigationObstacle(gameObject.GetComponent<NavMeshObstacle>());
         entity.isNavigationObstacleEnabled = true;
-        entity.isSelectable = true;
+        entity.AddSelectable("Prefabs/DepotSelection");
     }
 }

@@ -8,7 +8,7 @@ public class GameController : MonoBehaviour {
 
 	void Awake () {
         var context = Contexts.sharedInstance;
-        systems = new Feature("Systems")            
+        systems = new Feature("Systems")      
             .Add(new StartGameSystem(context))
             .Add(new InputSystem(context))
             .Add(new CountdownSystem(context))
@@ -20,8 +20,8 @@ public class GameController : MonoBehaviour {
             .Add(new SelectionSystem(context))
             .Add(new SelectionFrameUISystem(context))
             .Add(new SelectionFrameUiCleanupSystem(context))
-            .Add(new FollowTerrainSystem(context))
             .Add(new ViewSetupSystem(context))
+            .Add(new FollowTerrainSystem(context))
             .Add(new NavigationAgentSetupSystem(context))
             .Add(new NavigationObstacleSetupSystem(context))
             .Add(new NavigationTerrainClickSystem(context))
@@ -44,6 +44,7 @@ public class GameController : MonoBehaviour {
             .Add(new BackToMiningSystem(context))
             .Add(new TransferResourcesSystem(context))            
             .Add(new ResourceFullDetectSystem(context))
+            .Add(new UnitProductionSystem(context))
 
             .Add(new PlayerResourceSystem(context))
             .Add(new TextSystem(context))

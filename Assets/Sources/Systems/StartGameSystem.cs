@@ -23,7 +23,7 @@ public class StartGameSystem : IInitializeSystem
             {
                 GameEntity entity = gameContext.CreateEntity();
                 entity.AddAsset("Prefabs/Unit");
-                entity.isSelectable = true;
+                entity.AddSelectable("Prefabs/Selection");
 
                 entity.ReplaceNavigationAgent(null);
                 entity.ReplaceNavigationObstacle(null);
