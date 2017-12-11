@@ -14,42 +14,43 @@ public static class GameComponentsLookup {
     public const int ChannelAction = 3;
     public const int Countdown = 4;
     public const int CountownEnded = 5;
-    public const int DestroyCountdown = 6;
-    public const int Destroyed = 7;
-    public const int FollowTerrain = 8;
-    public const int Id = 9;
-    public const int NavigationAgent = 10;
-    public const int NavigationAgentEnabled = 11;
-    public const int NavigationAgentRadius = 12;
-    public const int NavigationApproach = 13;
-    public const int NavigationDebug = 14;
-    public const int NavigationObjectReached = 15;
-    public const int NavigationObjectTarget = 16;
-    public const int NavigationObstacle = 17;
-    public const int NavigationObstacleEnabled = 18;
-    public const int NavigationReached = 19;
-    public const int NavigationRecede = 20;
-    public const int NavigationTarget = 21;
-    public const int ParentLink = 22;
-    public const int PlayerInventory = 23;
-    public const int Position = 24;
-    public const int Resource = 25;
-    public const int ResourceDepot = 26;
-    public const int ResourceFull = 27;
-    public const int ResourceLimit = 28;
-    public const int ResourceMining = 29;
-    public const int ResourceQuantity = 30;
-    public const int ResourceSource = 31;
-    public const int ResourcesReturned = 32;
-    public const int Rotation = 33;
-    public const int Selectable = 34;
-    public const int Selected = 35;
-    public const int TransferResourceAction = 36;
-    public const int UnitProduction = 37;
-    public const int UnitSelection = 38;
-    public const int View = 39;
+    public const int CreateUnitAction = 6;
+    public const int DestroyCountdown = 7;
+    public const int Destroyed = 8;
+    public const int FollowTerrain = 9;
+    public const int Id = 10;
+    public const int NavigationAgent = 11;
+    public const int NavigationAgentEnabled = 12;
+    public const int NavigationAgentRadius = 13;
+    public const int NavigationApproach = 14;
+    public const int NavigationDebug = 15;
+    public const int NavigationObjectReached = 16;
+    public const int NavigationObjectTarget = 17;
+    public const int NavigationObstacle = 18;
+    public const int NavigationObstacleEnabled = 19;
+    public const int NavigationReached = 20;
+    public const int NavigationRecede = 21;
+    public const int NavigationTarget = 22;
+    public const int ParentLink = 23;
+    public const int PlayerInventory = 24;
+    public const int Position = 25;
+    public const int Resource = 26;
+    public const int ResourceDepot = 27;
+    public const int ResourceFull = 28;
+    public const int ResourceLimit = 29;
+    public const int ResourceMining = 30;
+    public const int ResourceQuantity = 31;
+    public const int ResourceSource = 32;
+    public const int ResourcesReturned = 33;
+    public const int Rotation = 34;
+    public const int Selectable = 35;
+    public const int Selected = 36;
+    public const int TransferResourceAction = 37;
+    public const int UnitProduction = 38;
+    public const int UnitSelection = 39;
+    public const int View = 40;
 
-    public const int TotalComponents = 40;
+    public const int TotalComponents = 41;
 
     public static readonly string[] componentNames = {
         "Act",
@@ -58,6 +59,7 @@ public static class GameComponentsLookup {
         "ChannelAction",
         "Countdown",
         "CountownEnded",
+        "CreateUnitAction",
         "DestroyCountdown",
         "Destroyed",
         "FollowTerrain",
@@ -101,6 +103,7 @@ public static class GameComponentsLookup {
         typeof(ChannelActionComponent),
         typeof(CountdownComponent),
         typeof(CountownEndedComponent),
+        typeof(CreateUnitActionComponent),
         typeof(DestroyCountdownComponent),
         typeof(DestroyedComponent),
         typeof(FollowTerrainComponent),

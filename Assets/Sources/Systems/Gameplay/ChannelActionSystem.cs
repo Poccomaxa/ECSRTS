@@ -16,7 +16,13 @@ public class ChannelActionSystem : ReactiveSystem<GameEntity>, ICleanupSystem
     {
         foreach (var entity in actGroup.GetEntities())
         {
-            entity.isAct = false;
+            if (entity.action.repeatable)
+            {
+                entity.isAct = false;
+            } else
+            {
+                entity.isDestroyed = true;
+            }            
         }   
     }
 
@@ -29,11 +35,7 @@ public class ChannelActionSystem : ReactiveSystem<GameEntity>, ICleanupSystem
             {
                 //If overflowTime > channelTime maybe act right away?
                 entity.ReplaceCountdown(Mathf.Max(0f, entity.channelAction.channelTime - entity.countownEnded.overflowTime));
-            }
-            else
-            {
-                entity.isDestroyed = true;
-            }
+            }            
         }
     }
 

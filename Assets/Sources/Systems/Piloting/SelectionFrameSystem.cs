@@ -42,7 +42,7 @@ public class SelectionFrameSystem : ReactiveSystem<InputEntity>
                 InputEntity frameEntity = inputContext.CreateEntity();
                 frameEntity.AddInputSelectionFrameStart(pointerPosition.inputPointerPosition.position);
                 frameEntity.AddInputSelectionFrameEnd(pointerPosition.inputPointerPosition.position);                
-            } else if (entity.isInputActionEnded || inUi)
+            } else if (entity.isInputActionEnded)
             {
                 foreach (var cleanEntities in frameStarted.GetEntities())
                 {

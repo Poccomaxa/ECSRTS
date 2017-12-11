@@ -19,7 +19,7 @@ public class StartGameSystem : IInitializeSystem
         RaycastHit hit;
         if (Physics.Raycast(centerRay, out hit))
         {
-            for (int i = 0; i < 10; ++i)
+            for (int i = 0; i < 3; ++i)
             {
                 GameEntity entity = UnitFactory.CreateWorker(gameContext);
                 Vector3 newPoint = hit.point + new Vector3(UnityEngine.Random.Range(-0.1f, 0.1f), 0, UnityEngine.Random.Range(-0.1f, 0.1f));

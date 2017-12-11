@@ -37,6 +37,7 @@ public class GameController : MonoBehaviour {
             .Add(new NavigationStoppingSystem(context))
             .Add(new InterruptMiningSystem(context))
 
+            .Add(new UnitProductionSystem(context))
             .Add(new InventoryInitSystem(context))
             .Add(new MiningSystem(context))
             .Add(new ChannelActionSystem(context))
@@ -44,7 +45,7 @@ public class GameController : MonoBehaviour {
             .Add(new BackToMiningSystem(context))
             .Add(new TransferResourcesSystem(context))            
             .Add(new ResourceFullDetectSystem(context))
-            .Add(new UnitProductionSystem(context))
+            .Add(new CreateUnitSystem(context))
 
             .Add(new PlayerResourceSystem(context))
             .Add(new TextSystem(context))

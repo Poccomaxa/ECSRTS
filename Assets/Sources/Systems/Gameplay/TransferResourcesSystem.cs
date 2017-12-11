@@ -21,6 +21,12 @@ public class TransferResourcesSystem : ReactiveSystem<GameEntity>
             if (fromEntity != null && toEntity != null &&
                 fromEntity.hasResource && fromEntity.hasResourceQuantity && fromEntity.resourceQuantity.quantity >= entity.transferResourceAction.amount)
             {
+                if (toEntity.hasResource && toEntity.resource.resource != fromEntity.resource.resource)
+                {
+                    //TODO:: assert?
+                    continue;
+                }
+
                 int amountToTransfer = entity.transferResourceAction.amount;
                 int prevToQuantity = toEntity.hasResourceQuantity ? toEntity.resourceQuantity.quantity : 0;
                 if (toEntity.hasResourceLimit)
