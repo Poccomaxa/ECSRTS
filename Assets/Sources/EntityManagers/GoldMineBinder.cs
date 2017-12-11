@@ -4,7 +4,7 @@ using UnityEngine;
 using Entitas;
 using Entitas.Unity;
 
-public class GoldMineSpawner : MonoBehaviour {
+public class GoldMineBinder : MonoBehaviour {
 
     void Start()
     {

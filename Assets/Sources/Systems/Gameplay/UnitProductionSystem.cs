@@ -6,10 +6,12 @@ using System;
 
 public class UnitProductionSystem : ReactiveSystem<InputEntity>
 {
+    IGroup<GameEntity> selected;
     public UnitProductionSystem(Contexts contexts) : base(contexts.input)
     {
-
+        selected = contexts.game.GetGroup(GameMatcher.Selected);
     }
+
     protected override void Execute(List<InputEntity> entities)
     {
         foreach (var entity in entities)

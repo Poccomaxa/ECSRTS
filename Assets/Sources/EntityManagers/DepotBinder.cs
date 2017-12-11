@@ -5,7 +5,7 @@ using Entitas;
 using Entitas.Unity;
 using UnityEngine.AI;
 
-public class DepotSpawner : MonoBehaviour {
+public class DepotBinder : MonoBehaviour {
     void Start()
     {
         GameContext gameContext = Contexts.sharedInstance.game;

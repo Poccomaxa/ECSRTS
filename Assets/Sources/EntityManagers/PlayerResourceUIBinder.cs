@@ -4,8 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using Entitas;
 
-public class PlayerResourceBinder : MonoBehaviour {
-
+public class PlayerResourceUIBinder : MonoBehaviour {
     private void Awake()
     {
         UiEntity resource = Contexts.sharedInstance.ui.CreateEntity();
