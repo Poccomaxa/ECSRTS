@@ -22,6 +22,11 @@ public class UnitProductionSystem : ReactiveSystem<InputEntity>
             GameEntity unitProductionBuilding = selectedUnitProduction[0];
             foreach (var entity in entities)
             {
+                GameEntity buildWorkerAction = gameContext.CreateEntity();
+                buildWorkerAction.AddChannelAction(5f);
+                buildWorkerAction.AddAction(false);
+                buildWorkerAction.AddParentLink(unitProductionBuilding.id.value);
+                //buildWorkerAction.
                 GameEntity newWorker = UnitFactory.CreateWorker(gameContext);
                 newWorker.AddPosition(unitProductionBuilding.position.position);
                 newWorker.AddNavigationTarget(unitProductionBuilding.position.position);
