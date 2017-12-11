@@ -18,5 +18,6 @@ public class DepotBinder : MonoBehaviour {
         entity.ReplaceNavigationObstacle(gameObject.GetComponent<NavMeshObstacle>());
         entity.isNavigationObstacleEnabled = true;
         entity.AddSelectable("Prefabs/DepotSelection");
+        entity.isUnitProduction = true;
     }
 }

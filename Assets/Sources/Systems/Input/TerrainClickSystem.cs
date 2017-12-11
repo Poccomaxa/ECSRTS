@@ -5,6 +5,7 @@ using UnityEngine;
 using Entitas;
 using Entitas.Unity;
 using System;
+using UnityEngine.EventSystems;
 
 public class TerrainClickSystem : ReactiveSystem<InputEntity>, ICleanupSystem {
     private InputContext inputContext;
@@ -15,6 +16,11 @@ public class TerrainClickSystem : ReactiveSystem<InputEntity>, ICleanupSystem {
 
     protected override void Execute(List<InputEntity> entities)
     {
+        if (EventSystem.current.IsPointerOverGameObject() || EventSystem.current.currentSelectedGameObject != null)
+        {
+            return;
+        }
+
         InputEntity pointerPosition = inputContext.GetGroup(InputMatcher.InputPointerPosition).Last();
         foreach (var e in entities)
         {

@@ -15,7 +15,7 @@ public class TerrainClickHighlightSystem : ReactiveSystem<InputEntity>
     protected override void Execute(List<InputEntity> entities)
     {
         foreach (InputEntity entity in entities)
-        {            
+        {
             GameEntity newEntity = gameContext.CreateEntity();
             newEntity.AddAsset("Prefabs/ClickHighlightPrefab");
             newEntity.AddPosition(entity.terrainClick.position);

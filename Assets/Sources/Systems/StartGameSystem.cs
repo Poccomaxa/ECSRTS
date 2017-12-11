@@ -21,16 +21,10 @@ public class StartGameSystem : IInitializeSystem
         {
             for (int i = 0; i < 10; ++i)
             {
-                GameEntity entity = gameContext.CreateEntity();
-                entity.AddAsset("Prefabs/Unit");
-                entity.AddSelectable("Prefabs/Selection");
-
-                entity.ReplaceNavigationAgent(null);
-                entity.ReplaceNavigationObstacle(null);
+                GameEntity entity = UnitFactory.CreateWorker(gameContext);
                 Vector3 newPoint = hit.point + new Vector3(UnityEngine.Random.Range(-0.1f, 0.1f), 0, UnityEngine.Random.Range(-0.1f, 0.1f));
                 entity.AddNavigationTarget(newPoint);
                 entity.AddPosition(newPoint);
-                entity.AddResourceLimit(5);
             }
         }
     }

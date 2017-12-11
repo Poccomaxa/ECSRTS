@@ -4,6 +4,7 @@ using UnityEngine;
 using Entitas;
 using System;
 using System.Linq;
+using UnityEngine.EventSystems;
 
 public class SelectionFrameSystem : ReactiveSystem<InputEntity>
 {
@@ -31,17 +32,17 @@ public class SelectionFrameSystem : ReactiveSystem<InputEntity>
 
     protected override void Execute(List<InputEntity> entities)
     {
+        bool inUi = EventSystem.current.IsPointerOverGameObject() || EventSystem.current.currentSelectedGameObject != null;
+        
         InputEntity pointerPosition = pointerGroup.Last();
         foreach (var entity in entities)
         {
-            if (entity.isInputActionStarted)
+            if (entity.isInputActionStarted && !inUi)
             {
                 InputEntity frameEntity = inputContext.CreateEntity();
                 frameEntity.AddInputSelectionFrameStart(pointerPosition.inputPointerPosition.position);
                 frameEntity.AddInputSelectionFrameEnd(pointerPosition.inputPointerPosition.position);                
-            }
-
-            if (entity.isInputActionEnded)
+            } else if (entity.isInputActionEnded || inUi)
             {
                 foreach (var cleanEntities in frameStarted.GetEntities())
                 {

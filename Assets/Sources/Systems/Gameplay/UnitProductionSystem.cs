@@ -6,17 +6,26 @@ using System;
 
 public class UnitProductionSystem : ReactiveSystem<InputEntity>
 {
+    GameContext gameContext;
     IGroup<GameEntity> selected;
     public UnitProductionSystem(Contexts contexts) : base(contexts.input)
     {
-        selected = contexts.game.GetGroup(GameMatcher.Selected);
+        gameContext = contexts.game;
+        selected = contexts.game.GetGroup(GameMatcher.AllOf(GameMatcher.Selected, GameMatcher.UnitProduction));
     }
 
     protected override void Execute(List<InputEntity> entities)
     {
-        foreach (var entity in entities)
+        GameEntity[] selectedUnitProduction = selected.GetEntities();
+        if (selectedUnitProduction.Length > 0)
         {
-
+            GameEntity unitProductionBuilding = selectedUnitProduction[0];
+            foreach (var entity in entities)
+            {
+                GameEntity newWorker = UnitFactory.CreateWorker(gameContext);
+                newWorker.AddPosition(unitProductionBuilding.position.position);
+                newWorker.AddNavigationTarget(unitProductionBuilding.position.position);
+            }
         }
     }
 
