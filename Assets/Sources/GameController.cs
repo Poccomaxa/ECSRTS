@@ -8,7 +8,7 @@ public class GameController : MonoBehaviour {
 
 	void Awake () {
         var context = Contexts.sharedInstance;
-        systems = new Feature("Systems")      
+        systems = new Feature("Systems")
             .Add(new StartGameSystem(context))
             .Add(new InputSystem(context))
             .Add(new CountdownSystem(context))
@@ -38,6 +38,9 @@ public class GameController : MonoBehaviour {
             .Add(new InterruptMiningSystem(context))
 
             .Add(new DetectProximitySystem(context))
+            .Add(new StartAttackSystem(context))
+            .Add(new AttackTargetSystem(context))
+            .Add(new FollowSystem(context))
             .Add(new UnitProductionSystem(context))
             .Add(new InventoryInitSystem(context))
             .Add(new MiningSystem(context))

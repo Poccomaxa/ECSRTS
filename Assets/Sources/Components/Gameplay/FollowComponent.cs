@@ -1,11 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using Entitas;
+using Entitas.CodeGeneration.Attributes;
 
-namespace Assets.Sources.Components.Gameplay
+[Game]
+public class FollowComponent : IComponent
 {
-    class FollowComponent
-    {
-    }
+    public float speed;
 }
