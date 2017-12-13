@@ -17,4 +17,17 @@ public static class UnitFactory
 
         return entity;
     }
+    
+    public static GameEntity CreateWarrior(GameContext gameContext)
+    {
+        GameEntity entity = gameContext.CreateEntity();
+        entity.AddAsset("Prefabs/UnitWarrior");
+        entity.AddSelectable("Prefabs/Selection");
+
+        entity.ReplaceNavigationAgent(null);
+        entity.ReplaceNavigationObstacle(null);
+        entity.AddResourceLimit(5);
+
+        return entity;
+    }
 }

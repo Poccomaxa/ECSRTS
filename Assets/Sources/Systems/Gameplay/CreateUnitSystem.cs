@@ -19,7 +19,17 @@ public class CreateUnitSystem : ReactiveSystem<GameEntity>
             GameEntity actionOwner = gameContext.GetEntityWithId(entity.parentLink.parentId);
             if (actionOwner != null)
             {
-                GameEntity newWorker = UnitFactory.CreateWorker(gameContext);
+                GameEntity newWorker = null;
+                switch (entity.unitType.type)
+                {
+                    case UnitType.WORKER:
+                        newWorker = UnitFactory.CreateWorker(gameContext);
+                        break;
+                    case UnitType.WARRIOR:
+                        newWorker = UnitFactory.CreateWarrior(gameContext);
+                        break;
+                }
+
                 newWorker.AddPosition(actionOwner.position.position);
                 newWorker.AddNavigationTarget(actionOwner.position.position);
             }
@@ -28,7 +38,7 @@ public class CreateUnitSystem : ReactiveSystem<GameEntity>
 
     protected override bool Filter(GameEntity entity)
     {
-        return entity.isAct && entity.isCreateUnitAction && entity.hasParentLink;
+        return entity.isAct && entity.isCreateUnitAction && entity.hasParentLink && entity.hasUnitType;
     }
 
     protected override ICollector<GameEntity> GetTrigger(IContext<GameEntity> context)

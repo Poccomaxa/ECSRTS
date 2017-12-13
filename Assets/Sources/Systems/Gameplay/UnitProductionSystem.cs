@@ -22,18 +22,20 @@ public class UnitProductionSystem : ReactiveSystem<InputEntity>
             GameEntity unitProductionBuilding = selectedUnitProduction[0];
             foreach (var entity in entities)
             {
-                if (GameUtils.IsEnoughResource(gameContext, gameContext.playerInventory, GameResource.GOLD, 50))
+                int price = DeterminePrice(entity.unitType.type);
+                if (GameUtils.IsEnoughResource(gameContext, gameContext.playerInventory, GameResource.GOLD, price))
                 {
                     GameEntity buildWorkerAction = gameContext.CreateEntity();
                     buildWorkerAction.AddChannelAction(5f);
                     buildWorkerAction.AddCountdown(5f);
                     buildWorkerAction.AddAction(false);
                     buildWorkerAction.AddParentLink(unitProductionBuilding.id.value);
+                    buildWorkerAction.AddUnitType(entity.unitType.type);
                     buildWorkerAction.isCreateUnitAction = true;
 
                     GameEntity payResourcesAction = gameContext.CreateEntity();
                     payResourcesAction.AddTransferResourceAction(gameContext.playerInventory.resourceIndex[GameResource.GOLD], 
-                            buildWorkerAction.id.value, 50);
+                            buildWorkerAction.id.value, price);
                     payResourcesAction.AddAction(false);
                     payResourcesAction.isAct = true;
                 }
@@ -47,11 +49,24 @@ public class UnitProductionSystem : ReactiveSystem<InputEntity>
 
     protected override bool Filter(InputEntity entity)
     {
-        return entity.hasInputAction && entity.inputAction.action == InputAction.BUILD_UNIT;
+        return entity.hasInputAction && entity.inputAction.action == InputAction.BUILD_UNIT && entity.hasUnitType;
     }
 
     protected override ICollector<InputEntity> GetTrigger(IContext<InputEntity> context)
     {
         return context.CreateCollector(InputMatcher.InputAction.Added());
     }
+
+    private int DeterminePrice(UnitType type)
+    {
+        switch (type)
+        {
+            case UnitType.WARRIOR:
+                return 100;
+            case UnitType.WORKER:
+                return 50;
+        }
+        return 0;
+    }
+
 }

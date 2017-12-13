@@ -48,9 +48,10 @@ public static class GameComponentsLookup {
     public const int TransferResourceAction = 37;
     public const int UnitProduction = 38;
     public const int UnitSelection = 39;
-    public const int View = 40;
+    public const int UnitType = 40;
+    public const int View = 41;
 
-    public const int TotalComponents = 41;
+    public const int TotalComponents = 42;
 
     public static readonly string[] componentNames = {
         "Act",
@@ -93,6 +94,7 @@ public static class GameComponentsLookup {
         "TransferResourceAction",
         "UnitProduction",
         "UnitSelection",
+        "UnitType",
         "View"
     };
 
@@ -137,6 +139,7 @@ public static class GameComponentsLookup {
         typeof(TransferResourceAction),
         typeof(UnitProductionComponent),
         typeof(UnitSelectionComponent),
+        typeof(UnitTypeComponent),
         typeof(ViewComponent)
     };
 }

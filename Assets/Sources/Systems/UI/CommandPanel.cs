@@ -10,5 +10,13 @@ public class CommandPanel : MonoBehaviour
     {
         InputEntity inputBuild = Contexts.sharedInstance.input.CreateEntity();
         inputBuild.AddInputAction(InputAction.BUILD_UNIT);
+        inputBuild.AddUnitType(UnitType.WORKER);
+    }
+
+    public void BuildWarrior()
+    {
+        InputEntity inputBuild = Contexts.sharedInstance.input.CreateEntity();
+        inputBuild.AddInputAction(InputAction.BUILD_UNIT);
+        inputBuild.AddUnitType(UnitType.WARRIOR);
     }
 }

@@ -22,8 +22,9 @@ public static class InputComponentsLookup {
     public const int InputSelectionFrameStart = 11;
     public const int InteractableClick = 12;
     public const int TerrainClick = 13;
+    public const int UnitType = 14;
 
-    public const int TotalComponents = 14;
+    public const int TotalComponents = 15;
 
     public static readonly string[] componentNames = {
         "Countdown",
@@ -39,7 +40,8 @@ public static class InputComponentsLookup {
         "InputSelectionFrameEnd",
         "InputSelectionFrameStart",
         "InteractableClick",
-        "TerrainClick"
+        "TerrainClick",
+        "UnitType"
     };
 
     public static readonly System.Type[] componentTypes = {
@@ -56,6 +58,7 @@ public static class InputComponentsLookup {
         typeof(InputSelectionFrameEnd),
         typeof(InputSelectionFrameStart),
         typeof(InteractableClickComponent),
-        typeof(TerrainClickComponent)
+        typeof(TerrainClickComponent),
+        typeof(UnitTypeComponent)
     };
 }
