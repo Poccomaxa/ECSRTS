@@ -1,13 +1,13 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using Entitas;
+﻿using Entitas;
+using Entitas.CodeGeneration.Attributes;
 
 public enum GameResource
 {
     GOLD
 }
 
-public class ResourceComponent : IComponent {
+[Game]
+public class ResourceComponent : IComponent
+{
     public GameResource resource;
 }

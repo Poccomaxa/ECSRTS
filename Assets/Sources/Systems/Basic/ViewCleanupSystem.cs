@@ -28,8 +28,8 @@ public class ViewCleanupSystem : MultiReactiveSystem<IViewEntity, Contexts> {
     protected override ICollector[] GetTrigger(Contexts contexts) {
         return new ICollector[]
         {
-            contexts.game.CreateCollector(GameMatcher.Destroyed),
-            contexts.ui.CreateCollector(UiMatcher.Destroyed)
+            contexts.game.CreateCollector(GameMatcher.Destroyed.Added()),
+            contexts.ui.CreateCollector(UiMatcher.Destroyed.Added())
         };
     }
 }

@@ -1,8 +1,5 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using Entitas;
 using UnityEngine;
-using Entitas;
 
-public class UnitProductionComponent : IComponent
-{
-}
+[Game]
+public class UnitProductionComponent : IComponent { }
