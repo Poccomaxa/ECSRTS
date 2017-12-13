@@ -30,6 +30,10 @@ public class FollowSystem : IExecuteSystem
                 if (direction.sqrMagnitude < distanceToTravel * distanceToTravel)
                 {
                     entity.isDestroyed = true;
+                    GameEntity damageAction = gameContext.CreateEntity();
+                    damageAction.isAct = true;
+                    damageAction.AddAction(false);
+                    damageAction.AddDamageAction(entity.targetLink.linkId, 10f);
                 }
                 else
                 {

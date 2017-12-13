@@ -29,11 +29,22 @@ public class SelectionCleanupSystem : ReactiveSystem<GameEntity>
 
     protected override bool Filter(GameEntity entity)
     {
-        return true;
+        return entity.hasId;
     }
 
     protected override ICollector<GameEntity> GetTrigger(IContext<GameEntity> context)
     {
-        return context.CreateCollector(GameMatcher.Selected.Removed());
+        return new Collector<GameEntity>(
+            new [] 
+            {
+                context.GetGroup(GameMatcher.Selected),
+                context.GetGroup(GameMatcher.Destroyed)
+            },
+            new []
+            {
+                GroupEvent.Removed,
+                GroupEvent.Added
+            }
+        );
     }
 }

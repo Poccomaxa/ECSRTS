@@ -14,7 +14,7 @@ public class GoldMineBinder : MonoBehaviour {
 
         entity.AddView(gameObject);
         entity.AddResource(GameResource.GOLD);
-        entity.AddResourceQuantity(UnityEngine.Random.Range(500, 600));
+        entity.AddResourceQuantity(UnityEngine.Random.Range(2500, 3200));
         entity.AddPosition(transform.position);
         entity.isResourceSource = true;
     }

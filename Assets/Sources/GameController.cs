@@ -16,7 +16,7 @@ public class GameController : MonoBehaviour {
             .Add(new TerrainClickSystem(context))
             .Add(new TerrainClickHighlightSystem(context))
             .Add(new SelectedHighlightSystem(context))
-            .Add(new SelectionCleanupSystem(context))
+            
             .Add(new SelectionFrameSystem(context))
             .Add(new SelectionSystem(context))
             .Add(new SelectionFrameUISystem(context))
@@ -51,6 +51,7 @@ public class GameController : MonoBehaviour {
             .Add(new TransferResourcesSystem(context))            
             .Add(new ResourceFullDetectSystem(context))
             .Add(new CreateUnitSystem(context))
+            .Add(new DamageSystem(context))
 
             .Add(new PlayerResourceSystem(context))
             .Add(new TextSystem(context))
@@ -58,6 +59,7 @@ public class GameController : MonoBehaviour {
             .Add(new PositionSystem(context))
             .Add(new RotationSystem(context))
             .Add(new RectSystem(context))
+            .Add(new SelectionCleanupSystem(context))
             .Add(new DestroyCountdownSystem(context))
             .Add(new ViewCleanupSystem(context))
             .Add(new DestroyedCleanupSystem(context));

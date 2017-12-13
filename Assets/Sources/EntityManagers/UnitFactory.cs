@@ -13,7 +13,8 @@ public static class UnitFactory
 
         entity.ReplaceNavigationAgent(null);
         entity.ReplaceNavigationObstacle(null);
-        entity.AddResourceLimit(5);
+        entity.AddResourceLimit(15);
+        entity.AddHealth(50f);
 
         return entity;
     }
@@ -28,6 +29,7 @@ public static class UnitFactory
         entity.ReplaceNavigationAgent(null);
         entity.ReplaceNavigationObstacle(null);
         entity.AddResourceLimit(5);
+        entity.AddHealth(100f);
 
         return entity;
     }

@@ -16,49 +16,51 @@ public static class GameComponentsLookup {
     public const int Countdown = 5;
     public const int CountownEnded = 6;
     public const int CreateUnitAction = 7;
-    public const int DestroyCountdown = 8;
-    public const int Destroyed = 9;
-    public const int DetectedProximityEntities = 10;
-    public const int DetectProximity = 11;
-    public const int Follow = 12;
-    public const int FollowTerrain = 13;
-    public const int Id = 14;
-    public const int LocalPlayer = 15;
-    public const int NavigationAgent = 16;
-    public const int NavigationAgentEnabled = 17;
-    public const int NavigationAgentRadius = 18;
-    public const int NavigationApproach = 19;
-    public const int NavigationDebug = 20;
-    public const int NavigationObjectReached = 21;
-    public const int NavigationObjectTarget = 22;
-    public const int NavigationObstacle = 23;
-    public const int NavigationObstacleEnabled = 24;
-    public const int NavigationReached = 25;
-    public const int NavigationRecede = 26;
-    public const int NavigationTarget = 27;
-    public const int Owner = 28;
-    public const int ParentLink = 29;
-    public const int PlayerInventory = 30;
-    public const int Position = 31;
-    public const int Resource = 32;
-    public const int ResourceDepot = 33;
-    public const int ResourceFull = 34;
-    public const int ResourceLimit = 35;
-    public const int ResourceMining = 36;
-    public const int ResourceQuantity = 37;
-    public const int ResourceSource = 38;
-    public const int ResourcesReturned = 39;
-    public const int Rotation = 40;
-    public const int Selectable = 41;
-    public const int Selected = 42;
-    public const int TargetLink = 43;
-    public const int TransferResourceAction = 44;
-    public const int UnitProduction = 45;
-    public const int UnitSelection = 46;
-    public const int UnitType = 47;
-    public const int View = 48;
+    public const int DamageAction = 8;
+    public const int DestroyCountdown = 9;
+    public const int Destroyed = 10;
+    public const int DetectedProximityEntities = 11;
+    public const int DetectProximity = 12;
+    public const int Follow = 13;
+    public const int FollowTerrain = 14;
+    public const int Health = 15;
+    public const int Id = 16;
+    public const int LocalPlayer = 17;
+    public const int NavigationAgent = 18;
+    public const int NavigationAgentEnabled = 19;
+    public const int NavigationAgentRadius = 20;
+    public const int NavigationApproach = 21;
+    public const int NavigationDebug = 22;
+    public const int NavigationObjectReached = 23;
+    public const int NavigationObjectTarget = 24;
+    public const int NavigationObstacle = 25;
+    public const int NavigationObstacleEnabled = 26;
+    public const int NavigationReached = 27;
+    public const int NavigationRecede = 28;
+    public const int NavigationTarget = 29;
+    public const int Owner = 30;
+    public const int ParentLink = 31;
+    public const int PlayerInventory = 32;
+    public const int Position = 33;
+    public const int Resource = 34;
+    public const int ResourceDepot = 35;
+    public const int ResourceFull = 36;
+    public const int ResourceLimit = 37;
+    public const int ResourceMining = 38;
+    public const int ResourceQuantity = 39;
+    public const int ResourceSource = 40;
+    public const int ResourcesReturned = 41;
+    public const int Rotation = 42;
+    public const int Selectable = 43;
+    public const int Selected = 44;
+    public const int TargetLink = 45;
+    public const int TransferResourceAction = 46;
+    public const int UnitProduction = 47;
+    public const int UnitSelection = 48;
+    public const int UnitType = 49;
+    public const int View = 50;
 
-    public const int TotalComponents = 49;
+    public const int TotalComponents = 51;
 
     public static readonly string[] componentNames = {
         "Act",
@@ -69,12 +71,14 @@ public static class GameComponentsLookup {
         "Countdown",
         "CountownEnded",
         "CreateUnitAction",
+        "DamageAction",
         "DestroyCountdown",
         "Destroyed",
         "DetectedProximityEntities",
         "DetectProximity",
         "Follow",
         "FollowTerrain",
+        "Health",
         "Id",
         "LocalPlayer",
         "NavigationAgent",
@@ -121,12 +125,14 @@ public static class GameComponentsLookup {
         typeof(CountdownComponent),
         typeof(CountownEndedComponent),
         typeof(CreateUnitActionComponent),
+        typeof(DamageActionComponent),
         typeof(DestroyCountdownComponent),
         typeof(DestroyedComponent),
         typeof(DetectedProximityEntitiesComponent),
         typeof(DetectProximityComponent),
         typeof(FollowComponent),
         typeof(FollowTerrainComponent),
+        typeof(HealthComponent),
         typeof(IdComponent),
         typeof(LocalPlayer),
         typeof(NavigationAgentComponent),

@@ -16,7 +16,7 @@ class InventoryInitSystem : IInitializeSystem
     {
         GameEntity gold = gameContext.CreateEntity();
         gold.ReplaceResource(GameResource.GOLD);
-        gold.ReplaceResourceQuantity(125);
+        gold.ReplaceResourceQuantity(25);
         Dictionary<GameResource, int> playerResouces = new Dictionary<GameResource, int>();
         playerResouces.Add(GameResource.GOLD, gold.id.value);
         gameContext.ReplacePlayerInventory(playerResouces);
