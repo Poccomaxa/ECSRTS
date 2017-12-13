@@ -23,40 +23,42 @@ public static class GameComponentsLookup {
     public const int Follow = 12;
     public const int FollowTerrain = 13;
     public const int Id = 14;
-    public const int NavigationAgent = 15;
-    public const int NavigationAgentEnabled = 16;
-    public const int NavigationAgentRadius = 17;
-    public const int NavigationApproach = 18;
-    public const int NavigationDebug = 19;
-    public const int NavigationObjectReached = 20;
-    public const int NavigationObjectTarget = 21;
-    public const int NavigationObstacle = 22;
-    public const int NavigationObstacleEnabled = 23;
-    public const int NavigationReached = 24;
-    public const int NavigationRecede = 25;
-    public const int NavigationTarget = 26;
-    public const int ParentLink = 27;
-    public const int PlayerInventory = 28;
-    public const int Position = 29;
-    public const int Resource = 30;
-    public const int ResourceDepot = 31;
-    public const int ResourceFull = 32;
-    public const int ResourceLimit = 33;
-    public const int ResourceMining = 34;
-    public const int ResourceQuantity = 35;
-    public const int ResourceSource = 36;
-    public const int ResourcesReturned = 37;
-    public const int Rotation = 38;
-    public const int Selectable = 39;
-    public const int Selected = 40;
-    public const int TargetLink = 41;
-    public const int TransferResourceAction = 42;
-    public const int UnitProduction = 43;
-    public const int UnitSelection = 44;
-    public const int UnitType = 45;
-    public const int View = 46;
+    public const int LocalPlayer = 15;
+    public const int NavigationAgent = 16;
+    public const int NavigationAgentEnabled = 17;
+    public const int NavigationAgentRadius = 18;
+    public const int NavigationApproach = 19;
+    public const int NavigationDebug = 20;
+    public const int NavigationObjectReached = 21;
+    public const int NavigationObjectTarget = 22;
+    public const int NavigationObstacle = 23;
+    public const int NavigationObstacleEnabled = 24;
+    public const int NavigationReached = 25;
+    public const int NavigationRecede = 26;
+    public const int NavigationTarget = 27;
+    public const int Owner = 28;
+    public const int ParentLink = 29;
+    public const int PlayerInventory = 30;
+    public const int Position = 31;
+    public const int Resource = 32;
+    public const int ResourceDepot = 33;
+    public const int ResourceFull = 34;
+    public const int ResourceLimit = 35;
+    public const int ResourceMining = 36;
+    public const int ResourceQuantity = 37;
+    public const int ResourceSource = 38;
+    public const int ResourcesReturned = 39;
+    public const int Rotation = 40;
+    public const int Selectable = 41;
+    public const int Selected = 42;
+    public const int TargetLink = 43;
+    public const int TransferResourceAction = 44;
+    public const int UnitProduction = 45;
+    public const int UnitSelection = 46;
+    public const int UnitType = 47;
+    public const int View = 48;
 
-    public const int TotalComponents = 47;
+    public const int TotalComponents = 49;
 
     public static readonly string[] componentNames = {
         "Act",
@@ -74,6 +76,7 @@ public static class GameComponentsLookup {
         "Follow",
         "FollowTerrain",
         "Id",
+        "LocalPlayer",
         "NavigationAgent",
         "NavigationAgentEnabled",
         "NavigationAgentRadius",
@@ -86,6 +89,7 @@ public static class GameComponentsLookup {
         "NavigationReached",
         "NavigationRecede",
         "NavigationTarget",
+        "Owner",
         "ParentLink",
         "PlayerInventory",
         "Position",
@@ -124,6 +128,7 @@ public static class GameComponentsLookup {
         typeof(FollowComponent),
         typeof(FollowTerrainComponent),
         typeof(IdComponent),
+        typeof(LocalPlayer),
         typeof(NavigationAgentComponent),
         typeof(NavigationAgentEnabledComponent),
         typeof(NavigationAgentRadiusComponent),
@@ -136,6 +141,7 @@ public static class GameComponentsLookup {
         typeof(NavigationReachedComponent),
         typeof(NavigationRecedeComponent),
         typeof(NavigationTargetComponent),
+        typeof(OwnerComponent),
         typeof(ParentLinkComponent),
         typeof(PlayerInventoryComponent),
         typeof(PositionComponent),

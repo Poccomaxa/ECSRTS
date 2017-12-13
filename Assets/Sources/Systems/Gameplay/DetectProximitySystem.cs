@@ -42,11 +42,11 @@ public class DetectProximitySystem : ReactiveSystem<GameEntity>
 
     protected override bool Filter(GameEntity entity)
     {
-        return entity.hasPosition;
+        return entity.hasPosition && entity.hasSelectable;
     }
 
     protected override ICollector<GameEntity> GetTrigger(IContext<GameEntity> context)
     {
-        return context.CreateCollector(GameMatcher.Position.Added());
+        return context.CreateCollector(GameMatcher.AllOf(GameMatcher.Position, GameMatcher.Selectable));
     }
 }

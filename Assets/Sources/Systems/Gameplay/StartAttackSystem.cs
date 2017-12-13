@@ -15,22 +15,46 @@ public class StartAttackSystem : ReactiveSystem<GameEntity>
     {
         foreach (var entity in entities)
         {
+            HashSet<int> enemiesInRange = new HashSet<int>(entity.detectedProximityEntities.entities.Where(index =>
+            {
+                GameEntity proximityEntity = gameContext.GetEntityWithId(index);
+                if (proximityEntity != null)
+                {
+                    return proximityEntity.hasOwner && proximityEntity.owner.id != entity.owner.id;
+                }
+                else
+                {
+                    return false;
+                }
+            }));
+
             var actions = gameContext.GetEntitiesWithParentLink(entity.id.value);
+            bool alreadyAttacking = false;
             foreach (var action in actions)
             {
-                action.isDestroyed = true;
-            }
+                if (action.hasAttackTargetAction)
+                {
+                    if (enemiesInRange.Contains(action.attackTargetAction.targetId))
+                    {
+                        alreadyAttacking = true;
+                    }
+                    else
+                    {
+                        action.isDestroyed = true;
+                    }
+                }
+            }            
 
-            if (entity.detectedProximityEntities.entities.Count > 0)
+            if (!alreadyAttacking && enemiesInRange.Count > 0)
             {
-                int someId = entity.detectedProximityEntities.entities.First();
+                int someEnemy = enemiesInRange.First();
 
                 GameEntity attackingAction = gameContext.CreateEntity();
                 attackingAction.AddAction(true);
-                attackingAction.AddChannelAction(0.2f);
-                attackingAction.AddCountdown(0.4f);
+                attackingAction.AddChannelAction(1f);
+                attackingAction.AddCountdown(1f);
                 attackingAction.AddParentLink(entity.id.value);
-                attackingAction.AddAttackTargetAction(entity.id.value, someId);
+                attackingAction.AddAttackTargetAction(entity.id.value, someEnemy);
             }
         }
     }

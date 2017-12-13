@@ -19,5 +19,6 @@ public class DepotBinder : MonoBehaviour {
         entity.isNavigationObstacleEnabled = true;
         entity.AddSelectable("Prefabs/DepotSelection");
         entity.isUnitProduction = true;
+        entity.AddOwner(0);
     }
 }

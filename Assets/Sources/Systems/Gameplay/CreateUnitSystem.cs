@@ -30,6 +30,7 @@ public class CreateUnitSystem : ReactiveSystem<GameEntity>
                         break;
                 }
 
+                newWorker.AddOwner(actionOwner.owner.id);
                 newWorker.AddPosition(actionOwner.position.position);
                 newWorker.AddNavigationTarget(actionOwner.position.position);
             }

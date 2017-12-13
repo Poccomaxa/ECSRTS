@@ -35,7 +35,12 @@ public class FollowSystem : IExecuteSystem
                 {
                     Vector3 step = direction.normalized * distanceToTravel;
                     entity.ReplacePosition(entity.position.position + step);
+                    entity.ReplaceRotation(Quaternion.FromToRotation(Vector3.forward, direction));
                 }
+            }
+            else
+            {
+                entity.isDestroyed = true;
             }
         }
     }

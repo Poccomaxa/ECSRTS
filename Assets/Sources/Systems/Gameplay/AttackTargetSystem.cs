@@ -20,7 +20,7 @@ public class AttackTargetSystem : ReactiveSystem<GameEntity>
                 GameEntity bulletEntity = gameContext.CreateEntity();
                 bulletEntity.AddAsset("Prefabs/Bullet");
                 bulletEntity.AddPosition(source.position.position);
-                bulletEntity.AddFollow(10f);
+                bulletEntity.AddFollow(40f);
                 bulletEntity.AddTargetLink(entity.attackTargetAction.targetId);
             }
         }
@@ -28,11 +28,11 @@ public class AttackTargetSystem : ReactiveSystem<GameEntity>
 
     protected override bool Filter(GameEntity entity)
     {
-        return entity.hasAttackTargetAction;
+        return entity.hasAttackTargetAction && entity.isAct;
     }
 
     protected override ICollector<GameEntity> GetTrigger(IContext<GameEntity> context)
     {
-        return context.CreateCollector(GameMatcher.AttackTargetAction.Added());
+        return context.CreateCollector(GameMatcher.AllOf(GameMatcher.AttackTargetAction, GameMatcher.Act));
     }
 }

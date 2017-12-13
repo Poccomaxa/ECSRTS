@@ -19,6 +19,12 @@ public class InputSystem : IExecuteSystem, ICleanupSystem
         DetectMouseButton(0, InputAction.SELECT);
         DetectMouseButton(1, InputAction.ACT);
 
+        if (Input.GetKeyDown(KeyCode.C))
+        {
+            InputEntity newInput = context.CreateEntity();
+            newInput.AddInputAction(InputAction.CHEAT_CREATE_ENEMY_WARRIOR);
+        }
+
         var entity = context.CreateEntity();
         entity.AddInputPointerPosition(Input.mousePosition);        
     }

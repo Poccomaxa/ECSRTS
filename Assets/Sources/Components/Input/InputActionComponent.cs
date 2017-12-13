@@ -8,7 +8,8 @@ public enum InputAction
 {
     SELECT,
     ACT,
-    BUILD_UNIT
+    BUILD_UNIT,
+    CHEAT_CREATE_ENEMY_WARRIOR
 }
 
 [Input]

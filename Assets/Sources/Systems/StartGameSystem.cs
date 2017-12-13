@@ -15,6 +15,7 @@ public class StartGameSystem : IInitializeSystem
 
     public void Initialize()
     {
+        gameContext.ReplaceLocalPlayer(0);
         Ray centerRay = Camera.main.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0f));
         RaycastHit hit;
         if (Physics.Raycast(centerRay, out hit))
@@ -25,6 +26,7 @@ public class StartGameSystem : IInitializeSystem
                 Vector3 newPoint = hit.point + new Vector3(UnityEngine.Random.Range(-0.1f, 0.1f), 0, UnityEngine.Random.Range(-0.1f, 0.1f));
                 entity.AddNavigationTarget(newPoint);
                 entity.AddPosition(newPoint);
+                entity.AddOwner(0);
             }
         }
     }
