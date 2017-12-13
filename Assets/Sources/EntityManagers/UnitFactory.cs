@@ -24,6 +24,7 @@ public static class UnitFactory
         entity.AddAsset("Prefabs/UnitWarrior");
         entity.AddSelectable("Prefabs/Selection");
 
+        entity.AddDetectProximity(30f * 30f);
         entity.ReplaceNavigationAgent(null);
         entity.ReplaceNavigationObstacle(null);
         entity.AddResourceLimit(5);

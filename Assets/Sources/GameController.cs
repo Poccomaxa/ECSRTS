@@ -37,6 +37,7 @@ public class GameController : MonoBehaviour {
             .Add(new NavigationStoppingSystem(context))
             .Add(new InterruptMiningSystem(context))
 
+            .Add(new DetectProximitySystem(context))
             .Add(new UnitProductionSystem(context))
             .Add(new InventoryInitSystem(context))
             .Add(new MiningSystem(context))
